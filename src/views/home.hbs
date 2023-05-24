@@ -1,0 +1,298 @@
+{{> header }}
+
+<body style="background-color: #E3E3E3;">
+
+  {{!-- <nav class="navbar navbar-expand-lg" id="nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" id="navlink">Levítico</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home" id="navlink">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/productos" id="navlink">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/recomendaciones" id="navlink">Recomendaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sobre_nosotros" id="navlink">Sobre nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactanos" id="navlink">Contáctanos</a>
+          </li>
+        </ul>
+      </div>
+      <div class="text-end">
+        <a href="" style="margin-right: 10px;"><img src="assets/img/carrito.png"></a>
+
+        <a href="/login"><img src="assets/img/usuario.png"></a>
+      </div>
+
+
+    </div>
+  </nav> --}}
+{{>navbar}}
+  <style>
+    #carousel {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+      bottom: 20px;
+      border-radius: none;
+    }
+
+    #carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #carousel img.show {
+      opacity: 1;
+    }
+
+    #prev-btn,
+    #next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 20px;
+      border: none;
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #prev-btn {
+      left: 0;
+    }
+
+    #next-btn {
+      right: 0;
+    }
+
+    .carta {
+      width: 15rem;
+      height: 240px;
+      text-align: center;
+      margin-left: 7px;
+      overflow: hidden;
+      transition: 0.5s;
+      object-fit: cover;
+    }
+
+    .contenedorcarta {
+      margin: 0 auto;
+
+    }
+
+    .carta:hover {
+      transform: scale(1.2);
+    }
+
+    .contenedor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: 350px;
+    }
+
+    .contenedor img {
+      max-width: 100%;
+      height: 350px;
+      width: 100%;
+      opacity: 0.7;
+    }
+
+    .contenedor a {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: ;
+      border: 0;
+    }
+
+    .texto {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      /* Ajusta el tamaño del texto según tus necesidades */
+      color: black;
+      /* Cambia el color del texto según tus necesidades */
+      text-align: center;
+    }
+    .texto2 {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      /* Ajusta el tamaño del texto según tus necesidades */
+      color: black;
+      /* Cambia el color del texto según tus necesidades */
+      text-align: center;
+    }
+  </style>
+
+  <div id="carousel">
+    <img src="assets/img/carrusel2.jpeg" alt="Imagen 1">
+    <img src="assets/img/carrusel.jpg" alt="Imagen 2">
+
+    <button id="prev-btn"><i class="fa fa-arrow-left"></i></button>
+    <button id="next-btn"><i class="fa fa-arrow-right"></i></button>
+  </div>
+  <br><br>
+
+  <div class="contenedorcarta row" style="width: 90%; ">
+
+    <div class="col-3">
+      <div class="carta card" style="width: 15rem; ">
+        <center><img
+            src="https://scontent.fpei3-1.fna.fbcdn.net/v/t1.6435-9/40779141_397990904065869_6345034832254337024_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=174925&_nc_eui2=AeE5B3C-z0WF7cMkeiL5TPm2E7isifsRmPYTuKyJ-xGY9kx_KAlJW7waocoAzS6ah2I_vcJNZT5-jVB0ZYsnk4E8&_nc_ohc=Ba8E3xDlsVUAX-2Hs1K&_nc_ht=scontent.fpei3-1.fna&oh=00_AfANxMr5M1mVSE3igz80pgft7u_yd3kwIBGMGFlffjBs8Q&oe=6477BB3E"
+            class="imagen card-img-top" alt="..." style="width:55%; margin-top:7px;"></center>
+        <div class="card-body">
+          <h6 class="card-title">Bolso de dama</h6>
+          <p class="card-text"></p>
+          <a href="ProduBolsos" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="carta card">
+        <center><img style="width:54%;"
+            src="data:image/jpeg;base64,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"
+            class="imagen card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title">Correa</h5>
+          <p class="card-text"></p>
+          <a href="ProduCorreas" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="carta card">
+        <center><img style="width:37%; margin-top:7px;"
+            src="https://scontent.fpei3-1.fna.fbcdn.net/v/t1.6435-9/46456303_432731383925154_3283544158974771200_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeGXe-Z5IJuOsyGK3abTOjAikqY9opWaVqeSpj2ilZpWp3M79n-eua3NuKL_uh3Zs0OS9Hdy5xh9Ce1Spx18lxBR&_nc_ohc=uWu6zk4AsLQAX-VB2QG&_nc_ht=scontent.fpei3-1.fna&oh=00_AfAXeqw46rWIpahkmh-RddkzODZFtaD8HQVBMxIAgRqKFg&oe=6477C09B"
+            class="imagen card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title">Chaqueta </h5>
+          <p class="card-text"></p>
+          <a href="ProduChaqueta" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="carta card">
+        <center><img style="width:67%;" src="assets/img/billetera.jpeg" class="imagen card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title">Billetera</h5>
+          <p class="card-text"></p>
+          <a href="ProduBilletera" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contenedorcarta row" style="width: 90%;  padding-top:40px;">
+    <br>
+    <div class="col-3">
+      <div class="carta card" style="width: 15rem; ">
+        <center><img
+            src="https://scontent.fpei3-1.fna.fbcdn.net/v/t1.6435-9/46357880_432730690591890_5034854208206012416_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeGe3iRsg2XlLsqBWVF7iYW_NxTUTyy_ppY3FNRPLL-mlu_Pfc60_RbOvmG-UscftijAAZrvhMle794Wt53DrHZy&_nc_ohc=_6YbBZK6QMkAX-wWLIB&_nc_ht=scontent.fpei3-1.fna&oh=00_AfCNxianaG1fUMXV0Ywk9ZMvc4Ru_mKTsdVxnTP8WgX5-g&oe=6477C9C9"
+            class="imagen card-img-top" alt="..." style="width:40%; margin-top:7px;"></center>
+        <div class="card-body">
+          <h6 class="card-title">Riñonera</h6>
+          <p class="card-text"></p>
+          <a href="ProduRino" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="carta card">
+        <center><img style="width:52%; margin-top:7px;" src="https://scontent.fpei1-1.fna.fbcdn.net/v/t1.18169-9/18010921_151106538754308_566807123004905314_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=174925&_nc_eui2=AeF-Jd_KWmmvsbToDONc_4f2ztZbt237fBPO1lu3bft8E4Qr0r7mWPc_jZjTGB4yjPvSYwkFaCGNlK1hueW5p4Pj&_nc_ohc=w2NlTcuBYrsAX89sQ3q&_nc_ht=scontent.fpei1-1.fna&oh=00_AfDHuBNrVsdMUHPIot9ZpliUfXHk8hUXso7isklON7PTlA&oe=6477D54C" class="imagen card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title">Morral</h5>
+          <p class="card-text"></p>
+          <a href="ProduMorral" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="carta card">
+        <center><img style="width:65%; margin-top:7px;"
+            src="https://scontent.fpei3-1.fna.fbcdn.net/v/t39.30808-6/305847861_1345593272638956_520187308498056155_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeHEnJQTG3UHvPQmq_aiSEiku0dcGMGa2827R1wYwZrbzRDvaM6z20746cy4tillRLUXP9bUQ3cGNcRnLSpEtUCQ&_nc_ohc=D9kwgIAFvBQAX_877iQ&_nc_ht=scontent.fpei3-1.fna&oh=00_AfBxA-QDeDSJPMbSlKE_2UAsOR4VBzFHRYo3nsRx2XLKRg&oe=64564286"
+            class="imagen card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title">Zapatos </h5>
+          <p class="card-text"></p>
+          <a href="ProduZapatos" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="carta card">
+        <center><img style="width:55%;" src="https://http2.mlstatic.com/D_NQ_NP_797779-MCO50098202559_052022-O.jpg"
+            class="imagen card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title">Accesorios</h5>
+          <p class="card-text"></p>
+          <a href="ProduAcces" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <br><br>
+  <div class="contenedor">
+    <img src="https://www.qhubomedellin.com/wp-content/uploads/2022/06/Levitico-678x381.webp" alt="">
+    <h3 class="texto">Nuestra tienda</h3>
+    <p class="texto2">Una experiencia única</p>
+    <a class="button btn btn-warning" href="contactanos">Visita nuestra tienda</a>
+  </div>
+  <script>
+    var index = 0;
+    var images = document.querySelectorAll("#carousel img");
+    var prevBtn = document.querySelector("#prev-btn");
+    var nextBtn = document.querySelector("#next-btn");
+
+    prevBtn.addEventListener("click", function () {
+      images[index].classList.remove("show");
+      index = (index - 1 + images.length) % images.length;
+      images[index].classList.add("show");
+    });
+
+    nextBtn.addEventListener("click", function () {
+      images[index].classList.remove("show");
+      index = (index + 1) % images.length;
+      images[index].classList.add("show");
+    });
+
+    // Mostrar la primera imagen
+    images[index].classList.add("show");
+  </script>
+
+
+
+</body>
+{{>footer}}

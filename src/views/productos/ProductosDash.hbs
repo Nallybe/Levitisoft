@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{{>headerD}}
+
+<body>
+    <!--Barra de navegación-->
+    <div class="wrapper ">
+        <div class="sidebar" data-color="black">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+            <div class="logo">
+                <a href="" class="simple-text" style="color:white;">
+                    Levitisoft
+                </a>
+            </div>
+            <div class="logo">
+                <a href="" class="simple-text" style="color:white; ">
+                    <img src="assets/img/admin4.png" style="width: 34px;"> Administrador
+                </a>
+            </div>
+            <div class="sidebar-wrapper" id="sidebar-wrapper">
+                <ul class="nav">
+                    <li>
+                        <a href="dashboard">
+                            <i class="fa fa-house" style="color:white;"></i>
+                            <p style="color:white;">Home</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="roles">
+                            <i class="fa fa-gear" style="color: white;"></i>
+                            <p style="color: white;">Roles</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="usuarios">
+                            <i class="fa fa-users" style="color:white;"></i>
+                            <p style="color:white;">Usuarios</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="compras">
+                            <i class="fa fa-shop" style="color:white;"></i>
+                            <p style="color:white;">Compras</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="insumos">
+                            <i class="fa fa-box" style="color:white;"></i>
+                            <p style="color:white;">Insumos</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="produccion">
+                            <i class="fa fa-scissors" style="color:white;"></i>
+                            <p style="color:white;">Producción</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="ProductosDash">
+                            <i class="fa fa-boxes-packing" style="color:black;"></i>
+                            <p style="color:black;">Productos</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="clientes">
+                            <i class="fa fa-user" style="color:white;"></i>
+                            <p style="color:white;">Clientes</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ventas" style="background-color: black">
+                            <i class="fa fa-truck-fast" style="color: white;"></i>
+                            <p style="color:white;">Ventas</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reparaciones">
+                            <i class="fa fa-screwdriver-wrench" style="color:white;"></i>
+                            <p style="color:white;">Reparaciones</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel" id="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#">Productos</a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                        aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <a class="nav-link" href="home">
+                            <i class="fa fa-right-from-bracket" style="margin-right:20px;"></i>
+                            <p>
+                                <span class="d-lg-none d-md-block">Salir</span>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <!--Barra de navegación-->
+            <br><br><br><br>
+            <div class="container" style="width: 100%; margin-top: 1%;">
+                <table class="table">
+                    <thead class="table-dark">
+                        <th>IdProducto</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Cantidad Disp</th>
+                        <th>Ver Detalle</th>
+                        <th>Estado </th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Sombrero</td>
+                            <td>Sombrero de cuero marrón</td>
+                            <td>200000$</td>
+                            <td>20</td>
+                            <td></td>
+                            <td data-label="estado">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <td data-label="editar">
+                                <button class="button edit is-warning" name="edit">
+                                    <span class="icon">
+                                        <i class="fa-sharp fa-solid fa-pen"></i>
+                                    </span>
+                                </button>
+                            </td>
+                            <td data-label="eliminar">
+                                <button class="button is-primary" type="button" name="deleteingrediente">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Bolso</td>
+                            <td>Bolso de cuero negro</td>
+                            <td>200000$</td>
+                            <td>7</td>
+                            <td></td>
+                            <td data-label="estado">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <td data-label="editar">
+                                <button class="button edit is-warning" name="edit">
+                                    <span class="icon">
+                                        <i class="fa-sharp fa-solid fa-pen"></i>
+                                    </span>
+                                </button>
+                            </td>
+                            <td data-label="eliminar">
+                                <button class="button is-primary" type="button" name="deleteingrediente">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Chaqueta</td>
+                            <td>Chaqueta de cuero negra con 7 bolsillos</td>
+                            <td>200000$</td>
+                            <td>20</td>
+                            <td></td>
+                            <td data-label="estado">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <td data-label="editar">
+                                <button class="button edit is-warning" name="edit">
+                                    <span class="icon">
+                                        <i class="fa-sharp fa-solid fa-pen"></i>
+                                    </span>
+                                </button>
+                            </td>
+                            <td data-label="eliminar">
+                                <button class="button is-primary" type="button" name="deleteingrediente">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="width: 200px; margin-left:200px;">
+                    <a href="AgregarProductos" class="btn btn-success mx-auto" style="width: 200px;margin-top: 140px;">Agregar</a>
+                </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+                crossorigin="anonymous"></script>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{{>headerD}}
+
+<body>
+
+
+  <!--////////////////////-->
+  <!--Start Navbar-->
+  <!--////////////////////-->
+
+  <div class="wrapper ">
+    <div class="sidebar" data-color="black">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="" class="simple-text" style="color:white;">
+          Levitisoft
+        </a>
+      </div>
+      <div class="logo">
+        <a href="" class="simple-text" style="color:white; ">
+          <img src="../assets/img/admin4.png" style="width: 34px;"> Administrador
+        </a>
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="dashboard">
+              <i class="fa fa-house" style="color: white;"></i>
+              <p style="color: white;">Home</p>
+            </a>
+          </li>
+          <li>
+            <a href="roles">
+              <i class="fa fa-gear" style="color:white;"></i>
+              <p style="color: white;">Roles</p>
+            </a>
+          </li>
+          <li>
+            <a href="usuarios">
+              <i class="fa fa-users" style="color:white;"></i>
+              <p style="color:white;">Usuarios</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="compras" style="background-color: white">
+              <i class="fa fa-shop" style="color: black;"></i>
+              <p style="color: black;">Compras</p>
+            </a>
+          </li>
+          <li>
+            <a href="insumos">
+              <i class="fa fa-box" style="color:white;"></i>
+              <p style="color:white;">Insumos</p>
+            </a>
+          </li>
+          <li>
+            <a href="produccion">
+              <i class="fa fa-scissors" style="color:white;"></i>
+              <p style="color:white;">Producción</p>
+            </a>
+          </li>
+          <li>
+            <a href="ProductosDash">
+              <i class="fa fa-boxes-packing" style="color:white;"></i>
+              <p style="color:white;">Productos</p>
+            </a>
+          </li>
+          <li>
+            <a href="clientes">
+              <i class="fa fa-user" style="color:white;"></i>
+              <p style="color:white;">Clientes</p>
+            </a>
+          </li>
+          <li>
+            <a href="ventas">
+              <i class="fa fa-truck-fast" style="color:white;"></i>
+              <p style="color:white;">Ventas</p>
+            </a>
+          </li>
+          <li>
+            <a href="reparaciones">
+              <i class="fa fa-screwdriver-wrench" style="color:white;"></i>
+              <p style="color:white;">Reparaciones</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" id="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="#" style="margin-left: 10px;"><i class="fa-regular fa-eye"></i> Detalle de
+              compra</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <a class="nav-link" href="home">
+              <i class="fa fa-user"></i>
+              <p>
+                <span class="d-lg-none d-md-block">Account</span>
+              </p>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <!--////////////////////-->
+      <!-- End Navbar -->
+      <!--////////////////////-->
+
+      <!--INICIO CUERPO-->
+
+
+      <div class="container" style="margin-top: 80px;">
+        <center>
+              <h3 class="title" style="margin-bottom: 2%;">Registro Compra</h3>
+              <!--Start Tabla Registro Compra-->
+              <table class="table" style="width: 90%;">
+                <thead class="table" style="background-color: #282d32; color:white;">
+                  <tr style="text-align: center;">
+                    <th> IdCompra</th>
+                    <th> Usuario</th>
+                    <th> Proveedor</th>
+                    <th> Recibo</th>
+                    <th> Monto</th>
+                    <th> Iva</th>
+                    <th> Total</th>
+                    <th> Fecha_Registro </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align: center;">
+                    <td>100</td>
+                    <td> <a href="#" style="text-decoration: none;" data-bs-toggle="mensaje" data-bs-placement="right" title="Id: #### | Nombre: Usuario B | Teléfono: ########## ">Usuario B</a></td>
+                    <td>La Minorista</td>
+                    <td>564ew587</td>
+                    <td>45000</td>
+                    <td>8000</td>
+                    <td>53000</td>
+                    <td>dd/mm/aaaa</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--End Tabla Registro Compra-->
+
+
+          <br>
+
+          
+              <h4 class="title" style="margin-bottom: 2%;">Insumos Compra</h4>
+              <!--Start Tabla Detalles-->
+              <table class="table" style="width: 80%;">
+                <thead class="table" style="background-color: #282d32; color:white;">
+                  <tr style="text-align: center;">
+                    <th> # </th>
+                    <th> Insumo</th>
+                    <th> Precio</th>
+                    <th> Cantidad</th>
+                    <th> Monto </th>
+                    <th style="width: 20%;"> Porcentaje_Iva</th>
+                    <th> Iva</th>
+                    <th> Sub_Total </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="text-align: center;">
+                    <td>1</td>
+                    <td> <a href="#" style="text-decoration: none;" data-bs-toggle="mensaje" data-bs-placement="right" title="IdInsumo: #### | NombreInsumo: Insumo W">Insumo W</a></td>
+                    <td>5000</td>
+                    <td>3</td>
+                    
+                    <td>30000</td>
+                    <td>19%</td>
+                    <td>5000</td>
+                    <td>35000</td>
+                  </tr>
+                  <tr style="text-align: center;">
+                    <td>2</td>
+                    <td> <a href="#" style="text-decoration: none;" data-bs-toggle="mensaje" data-bs-placement="right" title="IdInsumo: #### | NombreInsumo: Insumo R">Insumo R</a></td>
+                    <td>6000</td>
+                    <td>2</td>
+                    
+                    <td>15000</td>
+                    <td>8%</td>
+                    <td>3000</td>
+                    <td>18000</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--End Tabla Detalles-->
+
+          <!--Btn Volver-->
+          <div class="d-grid gap-2 col-3 mx-auto">
+            <a class="btn btn-primary" href="compras" type="button" style="border-radius: 0 !important;"> <i class="fa-sharp fa-solid fa-rotate-left"></i> Volver</a>
+          </div>
+        </center>
+      </div>
+
+      <!--FIN CUERPO-->
+</body>
+
+<!--INICIO FOOTER-->
+<div style="bottom: 0; margin-top: 5%;">
+  <footer class="footer-dark" style="position:static">
+    <div class="container">
+      <div class="row">
+        <div class="col item social"><a
+            href="https://m.facebook.com/profile.php?id=100065273580751&eav=AfaTJ0zKmgjL2-Zbf94elPzqb_j2bDbRAf9amB-xNR_y21OoeBPoXsNF_KKDDAx4Wnw&paipv=0&_rdr"><i
+              class="icon ion-social-facebook"></i></a>
+          <a href="https://wa.link/fm2ez7"><i class="icon ion-social-whatsapp"></i></a>
+          <a href="https://instagram.com/leviticoaccesorios?igshid=YmMyMTA2M2Y="><i
+              class="icon ion-social-instagram"></i></a>
+        </div>
+      </div>
+      <p class="copyright">LA TRILOGIA QUE ESTUDIA © 2022</p>
+    </div>
+  </footer>
+</div>
+<!--FIN FOOTER-->
+
+<!--////////////////////-->
+<!--START JS-->
+<!--////////////////////-->
+
+<!--JS Para el mensajito al pasar el mouse sobre el usuario-->
+<script src="js/bootstrap.bunle.min.js" type="text/javascript"></script>
+      <script>
+        var tooltipTrigger = [].slice.call(document.querySelectorAll('[data-bs-toggle="mensaje"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl){
+          return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+      </script>
+      
+<!--Core JS Files-->
+<script src="assets/js/core/jquery.min.js"></script>
+<script src="assets/js/core/popper.min.js"></script>
+<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chart JS -->
+<script src="assets/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
+<!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="assets/demo/demo.js"></script>
+<script>
+  $(document).ready(function () {
+    // Javascript method's body can be found in assets/js/demos.js
+    demo.initDashboardPageCharts();
+
+  });
+</script>
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+<!--////////////////////-->
+<!--END JS-->
+<!--////////////////////-->
+
+</html>
