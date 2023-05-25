@@ -5,6 +5,22 @@
 
 <body style="background-color: #E3E3E3;
   background-color: #ebecf1;">
+
+  <style>
+    #mensajeError {
+      display: none;
+      color: red;
+      margin-top: 5px;
+    }
+
+    #mensajeError .icono {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+      width: 15px;
+      height: 15px;
+    }
+  </style>
   <!--Barra de navegación-->
   <div class="wrapper ">
     <div class="sidebar" data-color="black">
@@ -127,16 +143,16 @@
               <!--Start Card 1-->
               <div class="card" style="width: 35%; border-radius: 0; margin-left: 20px;">
                 <div class="card-body">
-                  <form action="" method="post">
+                  <form action="" method="post" id="formulario">
                     <div class="row">
                       <div class="col-6">
                         <div class="form-floating mb-3">
 
-                          <input type="text" class="form-control" id="nombreRol " style="border-radius: 0;"
-                            name="nombreRol" required>
+                          <input type="text" class="form-control" id="nombreRol" style="border-radius: 0;"
+                            name="nombreRol" onclick="validar()">
+                          <div id="mensajeError"></div>
                           <label for="floatingInput">Nombre</label>
-                          <span id="nombreRolError"
-                            style="display: none; color: red; position: absolute; top: 10px; right: 10px;">&#10006;</span>
+
                         </div>
                       </div>
                       <div class="col-6">
@@ -228,7 +244,53 @@
 </body>
 <!--Inicio footer-->
 <script>
-  
+  let formulario = document.querySelector('#formulario');
+  let nombreInput = document.querySelector('#nombreRol');
+  let idInput = document.querySelector('#Permiso');
+  let mensajeErrorNombre = document.querySelector('#mensajeErrorNombre');
+  let nombre = "";
+  let Permiso = "";
+
+  nombreInput.addEventListener('blur', function () {
+    nombre = nombreInput.value;
+  });
+
+  idInput.addEventListener('blur', function () {
+    Permiso = idInput.value;
+  });
+
+  formulario.addEventListener('submit', function (event) {
+    if (nombre === "") {
+      event.preventDefault();
+      mostrarError(mensajeErrorNombre, 'Debe ingresar un nombre');
+    } else {
+      ocultarError(mensajeErrorNombre);
+    }
+
+    if (Permiso === "") {
+      event.preventDefault();
+      Swal.fire(
+        'Asigne al menos un permiso',
+        '',
+        'error'
+      )
+    } else {
+      
+    }
+  });
+
+
+
+  function mostrarError() {
+    mensajeError.innerHTML = '<span class="icono fa fa-circle-xmark"></span>Debe ingresar un nombre';
+    mensajeError.style.display = 'block';
+  }
+
+  function ocultarError() {
+    mensajeError.innerHTML = '';
+    mensajeError.style.display = 'none';
+  }
+
 
 </script>
 <!--Fin footer-->

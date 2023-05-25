@@ -171,28 +171,7 @@ function actualizar(req, res) {
   }); 
 }
 
-function eliminar(req, res) {
-  const idRoles = req.body.idRoles;
-  
-  req.getConnection((err, conn) => {
-    conn.query('DELETE FROM tbl_roles WHERE idRoles = ?', [idRoles], (err, rows) => {
-      if (err) {
-        console.error('Error al eliminar los datos de roles: ', err);
-        return;
-      } else
-      conn.query('DELETE FROM tbl_asignacion WHERE idRoles = ?', [idRoles], (err, rows) => {
-        if (err) {
-          console.error('Error al eliminar los datos de asignación: ', err);
-          return;
-        } else
-          
-          console.log("Se eliminaron los datos")
-        res.redirect('/roles');
-      });
-        
-    });
-  })
-}
+
 
 function permisos(req, res) {
   const idRoles = req.params.idRoles;
@@ -234,7 +213,6 @@ module.exports = {
   editar: editar,
   actualizar: actualizar,
   eliminarAsignacion: eliminarAsignacion,
-  eliminar: eliminar,
   permisos: permisos,
 
 

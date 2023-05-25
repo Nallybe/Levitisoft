@@ -127,7 +127,7 @@
               <div class="card" style="width: 35%; border-radius: 0; margin-left: 20px;">
                 <div class="card-body">
                   {{#each roles}}
-                  <form action="" method="post">
+                  <form action="" method="post" id="formulario">
                     <div class="row">
                       <div class="col-6">
                         <div class="input-group mb-3">
@@ -140,8 +140,9 @@
                       </div>
                       <div class="col-6">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" style="border-radius: 0;"
+                          <input type="text" class="form-control" id="nombreRol" style="border-radius: 0;"
                             value="{{nombreRoles}}" name="nombreRol">
+                          <div id="mensajeError"></div>
                           <label for="floatingInput">Nombre</label>
                         </div>
                       </div>
@@ -215,7 +216,7 @@
                         <label class="custom-control-label" for="permiso{{this.idPermisos}}" name="id"></label>
                       </div>
                     </div>
-                        <input type="hidden" name="idSeleccionado" id="idSeleccionado" value="">
+                    <input type="hidden" name="idSeleccionado" id="idSeleccionado" value="">
                     </form>
                     <div class="col-6" style="width:15%;">
                       <form action="/EliminarAsignacion/{{idRoles}}" method="POST">
@@ -244,6 +245,69 @@
 <!--Inicio footer-->
 
 <!--Fin footer-->
+
+
+<script>
+  let formulario = document.querySelector('#formulario');
+  let nombreInput = document.querySelector('#nombreRol');
+  let mensajeError = document.querySelector('#mensajeError');
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let nombre = "";
+  let todosDesactivados = true;
+
+  nombreInput.addEventListener('blur', function () {
+    nombre = nombreInput.value.trim();
+    if (nombre === "") {
+      mostrarError('Debe ingresar un nombre');
+    } else {
+      ocultarError();
+    }
+  });
+
+  formulario.addEventListener('submit', function (event) {
+    // Validación del nombre
+    if (nombre === "") {
+      event.preventDefault();
+      mostrarError('Debe ingresar un nombre');
+      Swal.fire(
+        'El campo nombre es obligatorio',
+        '',
+        'error'
+      )
+    } else {
+      ocultarError();
+    }
+
+    // Validación de los checkboxes
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        todosDesactivados = false;
+        break;
+      }
+    }
+
+    if (todosDesactivados) {
+      event.preventDefault();
+      Swal.fire(
+        'Asigne al menos un permiso',
+        '',
+        'error'
+      )
+    }
+  });
+
+  function mostrarError(mensaje) {
+    mensajeError.innerHTML = '<span class="icono fa fa-circle-xmark"></span>' + mensaje;
+    mensajeError.style.display = 'block';
+  }
+
+  function ocultarError() {
+    mensajeError.innerHTML = '';
+    mensajeError.style.display = 'none';
+  }
+</script>
+
+
 <script>
 
   let idSeleccionado = [];
@@ -251,9 +315,6 @@
   function obtener(checkbox, idPermisos) {
     if (checkbox.checked) {
       idSeleccionado.push(idPermisos);
-      alert('El checkbox está activado');
-      alert(idSeleccionado);
-
     } else {
       idSeleccionado = [];
     }

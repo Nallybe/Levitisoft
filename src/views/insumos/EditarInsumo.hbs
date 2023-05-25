@@ -140,8 +140,8 @@
                                             <div class="col-6">
                                                 <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" id=" floatingInput"
-                                                        style="border-radius: 0;" name="nombre" value="{{nombreInsumo}}"
-                                                        required>
+                                                        style="border-radius: 0;" name="nombreInsumo"
+                                                        value="{{nombreInsumo}}" required>
                                                     <label for="floatingInput">Nombre</label>
                                                 </div>
                                             </div>
@@ -199,7 +199,7 @@
                                 <div class="d-grid gap-2">
 
                                     <button type="submit" class=" btn btn-success"
-                                        style="border-radius: 0; margin-bottom: 1px;" id="boton">
+                                        style="border-radius: 0; margin-bottom: 1px;" id="boton" onclick="editar()">
                                         Editar insumo</a>
                                 </div>
                                 <a class="btn btn-danger" href="/insumos"
@@ -224,11 +224,36 @@
 
     </div>
     </center>
-    
+
 
 </body>
 <!--Inicio footer-->
+<script>
+    function editar() {
+        let timerInterval
+        Swal.fire({
+            icon: 'success',
+            title: 'Insumo actualizado con éxtito',
+            html: '',
+            timer: 1500,
+            timerProgressBar: false,
+            didOpen: () => {
 
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+                location.replace('/insumos');
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer');
+            }
+        })
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/assets/js/ValidacionEditarInsumo.js"></script>
