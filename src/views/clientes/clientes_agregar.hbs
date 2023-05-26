@@ -157,28 +157,38 @@
                 <div class="card-body">
                   <form action="" method="post">
                     <div class="row">
-                      <div class="col-12">
+                      <div class="col-6">
                         <div class="input-group mb-3">
                           <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" style="border-radius: 0;"
-                              placeholder="0000" name="nombre">
-                            <label for="floatingInput">Nombre</label>
-                          </div>
+                            <input type="number" class="form-control" id="documento" style="border-radius: 0;"
+                               name="documento">
+                            <label for="floatingInput">Documento</label>
+                          </div> 
                         </div>
                       </div>
+                      <div class="col-6">
+                        <div class="input-group mb-3">
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="nombre" style="border-radius: 0;"
+                               name="nombre">
+                            <label for="floatingInput">Nombre</label>
+                          </div> 
+                        </div>
+                      </div>
+                        
                     </div>
                     <div class="row">
                       <div class="col-6">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" style="border-radius: 0;"
-                            placeholder="0000" name="telefono">
+                          <input type="text" class="form-control" id="telefono" style="border-radius: 0;"
+                             name="telefono">
                           <label for="floatingInput">Telefono</label>
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-floating mb-3">
 
-                          <select class="form-control" id="floatingInput" style="border-radius: 0;" placeholder="0000" name="estado">
+                          <select class="form-control" id="estado" style="border-radius: 0;"  name="estado">
                             <option value="A">Activo</option>
                             <option value="I">Inactivo</option>
                           </select>

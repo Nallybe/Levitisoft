@@ -5,6 +5,35 @@
 
 <body style="background-color: #E3E3E3;">
     <!--Barra de navegación-->
+    <style>
+        #mensajeErrorNombre {
+            display: none;
+            color: red;
+            margin-top: 5px;
+        }
+
+        #mensajeErrorNombre .icono {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 15px;
+            height: 15px;
+        }
+
+        #mensajeErrorStock {
+            display: none;
+            color: red;
+            margin-top: 5px;
+        }
+
+        #mensajeErrorStock .icono {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 15px;
+            height: 15px;
+        }
+    </style>
     <div class="wrapper ">
         <div class="sidebar" data-color="black">
             <!--
@@ -125,9 +154,9 @@
                             <h4 class="card-title" style="margin-bottom: 2%;">Editar insumo</h4>
                             <!--Start Card 1-->
                             <div class="card" style="width: 35%; border-radius: 0; margin-left: 20px;">
-                                <div class="card-body">
+                                <div class="card-body"> 
                                     {{#each insumos}}
-                                    <form action="" method="post">
+                                    <form action="" method="post" id="formulario">
                                         <div class="mb-3">
                                             <div class="form-floating mb-3">
                                                 <input type="text" class="form-control" id=" floatingInput"
@@ -139,17 +168,19 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id=" floatingInput"
+                                                    <input type="text" class="form-control" id=" nombreInsumo"
                                                         style="border-radius: 0;" name="nombreInsumo"
-                                                        value="{{nombreInsumo}}" required>
+                                                        value="{{nombreInsumo}}">
+                                                    <div id="mensajeErrorNombre"></div>
                                                     <label for="floatingInput">Nombre</label>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="floatingInput"
-                                                        style="border-radius: 0;" name="stock" value="{{stock}}"
-                                                        required>
+                                                    <input type="number" class="form-control" id="stockInsumo"
+                                                        style="border-radius: 0;" name="stockInsumo"
+                                                        value="{{stockInsumo}}">
+                                                    <div id="mensajeErrorStock"></div>
                                                     <label for="floatingInput">Stock</label>
                                                 </div>
                                             </div>
@@ -229,6 +260,53 @@
 </body>
 <!--Inicio footer-->
 <script>
+    let formulario = document.querySelector('#formulario');
+    let nombreInputs = document.querySelectorAll('input[name="nombreInsumo"]');
+    let stockInputs = document.querySelectorAll('input[name="stockInsumo"]');
+    let mensajeErrorNombre = document.querySelector('#mensajeErrorNombre');
+    let mensajeErrorStock = document.querySelector('#mensajeErrorStock');
+    
+
+    nombreInputs.forEach(function (nombreInput) {
+        nombreInput.addEventListener('blur', function () {
+            nombre = nombreInput.value;
+        });
+    });
+
+    stockInputs.forEach(function (stockInput) {
+        stockInput.addEventListener('blur', function () {
+            stock = stockInput.value;
+        });
+    });
+
+    formulario.addEventListener('submit', function (event) {
+        if (nombre === "") {
+            event.preventDefault();
+            mostrarError(mensajeErrorNombre, 'Campo Obligatorio');
+        } else {
+            ocultarError(mensajeErrorNombre);
+        }
+
+        if (stock === "") {
+            event.preventDefault();
+            mostrarError(mensajeErrorStock, 'Campo Obligatorio');
+        } else {
+            ocultarError(mensajeErrorStock);
+        }
+    });
+
+    function mostrarError(elemento, mensaje) {
+        elemento.innerHTML = '<span class="icono fa fa-circle-xmark"></span>' + mensaje;
+        elemento.style.display = 'block';
+    }
+
+    function ocultarError(elemento) {
+        elemento.innerHTML = '';
+        elemento.style.display = 'none';
+    }
+</script>
+{{!--
+<script>
     function editar() {
         let timerInterval
         Swal.fire({
@@ -251,7 +329,7 @@
             }
         })
     }
-</script>
+</script> --}}
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

@@ -182,7 +182,7 @@
                             <td class="py-3 px-6 text-center">{{idInsumos}}</td>
                             <td class="p-3 text-center">{{nombreInsumo}}</td>
                             <td class="p-3 text-center">{{medida}}</td>
-                            <td class="p-3 text-center">{{stock}}</td>
+                            <td class="p-3 text-center">{{stockInsumo}}</td>
                             <td class="p-3 text-center">{{estado}}</td>
                             <td>
                                 <button class="btn btn" style="padding-right: 5px;"><a href="EditarInsumo/{{idInsumos}}"
@@ -190,7 +190,7 @@
                                             class="fa-sharp fa-solid fa-pen"></i></a></button>
                                 <form action="/EliminarInsumo" method="POST" class="boton-insumo">
                                     <input type="hidden" value="{{idInsumos}}" name="idInsumos">
-                                    <button class="btn btn" type="submit"><i class="fa fa-trash" style=""></i></button>
+                                    <button class="btn btn" type="submit" ><i class="fa fa-trash" style=""></i></button>
                                 </form>
 
                             </td>

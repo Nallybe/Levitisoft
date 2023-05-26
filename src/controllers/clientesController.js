@@ -1,6 +1,6 @@
 function listar(req, res) {
     req.getConnection((err, conn) => {
-        conn.query('SELECT ui.idInfo, ui.idAccess, ui.nombre, ui.telefono, COUNT(v.idVentas) AS numero_ventas, COUNT(r.idReparaciones) AS numero_reparaciones, ui.estado FROM users_info ui LEFT JOIN tbl_ventas v ON ui.idInfo = v.idInfo LEFT JOIN tbl_reparaciones r ON ui.idInfo = r.idInfo GROUP BY ui.idInfo, ui.idAccess, ui.nombre, ui.telefono, ui.estado;', (err, clientes) => {
+        conn.query('SELECT ui.idInfo, ui.idAccess, ui.documento, ui.nombre, ui.telefono, COUNT(v.idVentas) AS numero_ventas, COUNT(r.idReparaciones) AS numero_reparaciones, ui.estado FROM users_info ui LEFT JOIN tbl_ventas v ON ui.idInfo = v.idInfo LEFT JOIN tbl_reparaciones r ON ui.idInfo = r.idInfo GROUP BY ui.idInfo, ui.idAccess, ui.nombre, ui.telefono, ui.estado;', (err, clientes) => {
             if (err) {
                 res.json(err);
             }
@@ -26,6 +26,7 @@ function registrar(req, res) {
     const data = req.body;
     console.log(data)
     const RegistroUser = {
+        documento: data.documento,
         nombre: data.nombre,
         telefono: data.telefono,
         estado: data.estado,

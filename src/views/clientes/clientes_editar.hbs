@@ -158,32 +158,41 @@
                   {{#each info}}
                   <form method="post" action="">
                     <div class="row">
-                      <div class="col-6">
+                      <div class="col-12">
                         <div class="form-floating mb-3">
                           <input type="text" class="form-control" id="floatingInput" style="border-radius: 0;"
                             value="{{idInfo}}" disabled>
                           <label for="floatingInput">IdInfo</label>
                         </div>
                       </div>
-                      <div class="col-6">
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" style="border-radius: 0;"
+                          <input type="text" class="form-control" id="nombre" style="border-radius: 0;"
                             value="{{nombre}}" name="nombre">
-                          <label for="floatingInput">Usuario</label>
+                          <label for="floatingInput">Nombre</label>
                         </div>
                       </div>
-                    </div>
+                      <div class="col-6">
+                        <div class="form-floating mb-3">
+                          <input type="text" class="form-control" id="Documento" style="border-radius: 0;"
+                            value="{{documento}}" name="documento">
+                          <label for="floatingInput">Documento</label>
+                        </div>
+                      </div>
+                      </div>
                     <div class="row">
                       <div class="col-6">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" style="border-radius: 0;"
-                            placeholder="0000" value="{{telefono}}" name="telefono">
+                          <input type="text" class="form-control" id="telefono" style="border-radius: 0;"
+                             value="{{telefono}}" name="telefono">
                           <label for="floatingInput">Telefono</label>
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-floating mb-3">
-                          <select class="form-control" id="floatingInput" style="border-radius: 0;" placeholder="0000"
+                          <select class="form-control" id="estado" style="border-radius: 0;" 
                             name="estado">
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>

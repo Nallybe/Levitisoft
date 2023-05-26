@@ -5,7 +5,10 @@
 
 <body style="background-color: #E3E3E3;
   background-color: #ebecf1;">
-
+  <input id="mensaje" class="hidden" value="{{mensaje}}">
+  <script>
+    alert(document.getElementById('mensaje').value)
+  </script>
   <style>
     #mensajeError {
       display: none;
@@ -275,7 +278,7 @@
         'error'
       )
     } else {
-      
+
     }
   });
 

@@ -28,7 +28,7 @@ function registrar(req, res) {
   const RegistroInsumo = {
     nombreInsumo: data.nombreInsumo,
     medida: data.medidaInsumo,
-    stock: data.stockInsumo,
+    stockInsumo: data.stockInsumo,
     estado: data.estadoInsumo,
   };
   req.getConnection((err, conn) => {
@@ -78,6 +78,7 @@ function actualizar(req, res) {
           console.error('Error al actualizar los datos: ', err);
           return;
         }
+        res.redirect("/insumos");
         
       }
     );
@@ -93,8 +94,10 @@ function eliminar(req, res) {
       if (err) {
         console.error('Error al eliminar los datos: ', err);
         return;
-      } else
-        console.log("Se eliminaron los datos")
+      }
+
+
+      console.log("Se eliminaron los datos")
       res.redirect('/insumos');
     });
   })

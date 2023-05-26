@@ -61,6 +61,8 @@ function registrar(req, res) {
                     return;
                   } else {
                     console.log("Asignacion guardada");
+                    var mensaje = "Registro éxitoso"
+                    res.redirect("/roles", );
                   }
 
                 }
@@ -73,7 +75,7 @@ function registrar(req, res) {
     );
   });
 
-  res.redirect("/roles");
+  
 }
 function editar(req, res) {
   const idRoles = req.params.idRoles;
