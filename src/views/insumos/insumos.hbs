@@ -138,21 +138,20 @@
                     <div class="col-md-4">
 
                         <div class="row" style="margin-left: 8px;">
-                            
-                                <div class="col-md-8">
 
-                                    <input
-                                        style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
-                                        class="form-control me-2" type="search" placeholder="Buscar insumo" name="termino"
-                                        aria-label="Search">
-                                </div>
-                                <div class="col-md-2">
-                                    <button class="btn btn-outline-success" type="submit"
-                                        style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"><i
-                                            class="fa-sharp fa-solid fa-magnifying-glass"
-                                            style="width: 100%;"></i></button>
-                                </div>
-                            
+                            <div class="col-md-8">
+
+                                <input
+                                    style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
+                                    class="form-control me-2" type="search" placeholder="Buscar insumo" name="termino"
+                                    aria-label="Search">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-outline-success" type="submit"
+                                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"><i
+                                        class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i></button>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-md-5"></div>
@@ -185,12 +184,13 @@
                             <td class="p-3 text-center">{{stockInsumo}}</td>
                             <td class="p-3 text-center">{{estado}}</td>
                             <td>
-                                <button class="btn btn" style="padding-right: 5px;"><a href="EditarInsumo/{{idInsumos}}"
+                                <a href="EditarInsumo/{{idInsumos}}"
                                         style="color: #292b2c; " class="boton-insumo"><i type="button"
                                             class="fa-sharp fa-solid fa-pen"></i></a></button>
-                                <form action="/EliminarInsumo" method="POST" class="boton-insumo">
+                                <form action="/EliminarInsumo" method="POST" class="boton-insumo" id="eliminarInsumoForm">
                                     <input type="hidden" value="{{idInsumos}}" name="idInsumos">
-                                    <button class="btn btn" type="submit" ><i class="fa fa-trash" style=""></i></button>
+                                    <a type="button" onclick="alerta()"><i class="fa fa-trash"
+                                            style=""></i></a>
                                 </form>
 
                             </td>
@@ -211,6 +211,23 @@
 <!--Fin footer-->
 <!--Fin footer-->
 </body>
+<script>
+    function alerta() {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar insumo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("eliminarInsumoForm").submit();
+            }
+        });
+    }
+</script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="assets/js/ValidacionEliminarInsumo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

@@ -126,15 +126,19 @@
                             <!--Start Card 1-->
                             <div class="card" style="width: 58%; border-radius: 0; margin-left: 20px;">
                                 <div class="card-body">
-                                    <form action="" method="post">
+                                    <form action="" method="post" id="formulario">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="mb-3">
                                                     <div class="form-floating mb-3">
 
-                                                        <input type="text" class="form-control"
-                                                            id="nombre floatingInput" style="border-radius: 0;"
-                                                            name="nombre" required>
+                                                        <select class="form-control" id="nombre"
+                                                            style="border-radius: 0;" name="nombre">
+                                                            {{#each nombre}}
+                                                            <option value="{{nombre}}">{{nombre}}</option>
+
+                                                            {{/each}}
+                                                        </select>
 
                                                         <label for="floatingInput">Nombre</label>
 
@@ -152,7 +156,7 @@
                                                     <div class="form-floating mb-3">
 
                                                         <input type="text" class="form-control" id="totalInput"
-                                                            style="border-radius: 0;" name="total" >
+                                                            style="border-radius: 0;" name="total">
 
                                                         <label for="floatingInput">Total</label>
 
@@ -164,8 +168,10 @@
 
                                                         <select class="form-control" id="floatingInput"
                                                             style="border-radius: 0;" name="estado">
+                                                            <option value="Entregado">Entregado</option>
                                                             <option value="Registrado">Registrado</option>
-                                                            <option value="Registrado_garantia">Registrado con garantia</option>
+                                                            <option value="Entregado_garantia">Entregado con garantia
+                                                            </option>
                                                         </select>
                                                         <label for="floatingInput">Estado</label>
                                                     </div>
@@ -238,25 +244,35 @@
 
 
 <script>
-    // Obtener los parámetros de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const productosSeleccionados = JSON.parse(urlParams.get('productos'));
     const total = urlParams.get('total');
-    const cantidades = JSON.parse(urlParams.get('UND')); // Obtener la cantidad de cada producto
+    const cantidades = JSON.parse(urlParams.get('UND'));
 
-    /*alert(productosSeleccionados);
-    alert(total);
-    alert(cantidades);*/
     const IdProductos = document.getElementById('IdProductos');
-    // Establecer el valor del input con el valor de total
     IdProductos.value = productosSeleccionados;
+
     const cantidadProductos = document.getElementById('cantidadProductos');
-    // Establecer el valor del input con el valor de total
     cantidadProductos.value = cantidades;
+
     const totalInput = document.getElementById('totalInput');
-    // Establecer el valor del input con el valor de total
     totalInput.value = total;
+
+    const formulario = document.getElementById('formulario');
+    formulario.addEventListener('submit', function (event) {
+        if (IdProductos.value === "") {
+            event.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Debe de ingresar por lo menos 1 producto'
+            });
+        }
+
+        
+    });
 </script>
+
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="assets/js/ValidacionVentas.js"></script>

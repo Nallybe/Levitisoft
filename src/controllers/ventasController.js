@@ -30,16 +30,18 @@ function crear(req, res) {
         conn.query("SELECT * FROM tbl_ventas", (err, ventas) => {
             if (err) {
                 res.json(err);
-            } else {
-                res.render("ventas/AgregarVenta", { ventas });
-            }
+            } conn.query("SELECT nombre FROM users_info", (err, nombre) => {
+                if (err) {
+                    res.json(err);
+                } res.render("ventas/AgregarVenta", { ventas, nombre });
+            })
         })
     });
 }
 
 function registrar(req, res) {
     const data = req.body;
-    console.log(data)
+    console.log(data) 
 
     req.getConnection((err, conn) => {
         conn.query('SELECT idInfo FROM users_info WHERE nombre = ?', [data.nombre], (error, results) => {
@@ -52,14 +54,14 @@ function registrar(req, res) {
                 res.status(404).json({ error: 'No se encontró el nombre en la tabla users_info' });
             } else {
                 const idInfo = results[0].idInfo;
-                console.log(results)
+                //console.log(results)
                 const RegistroVenta = {
                     idInfo: idInfo,
                     total: data.total,
                     fecha: data.fecha,
                     estado: data.estado,
                 };
-                console.log(RegistroVenta)
+                //console.log(RegistroVenta)
                 // Insertar los datos en la tabla tbl_ventas
                 conn.query('INSERT INTO tbl_ventas SET ?', [RegistroVenta], (error, result) => {
                     if (error) {
@@ -76,7 +78,7 @@ function registrar(req, res) {
                                 idProductos: idProductos[i],
                                 Unidad: unidadesArray[i]
                             };
-                            console.log(RegistroDetVent)
+                            //console.log(RegistroDetVent)
                             req.getConnection((err, conn) => {
 
                                 conn.query(

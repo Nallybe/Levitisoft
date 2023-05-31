@@ -15,10 +15,16 @@ function crear(req, res) {
         conn.query("SELECT * FROM users_info", (err, clientes) => {
             if (err) {
                 res.json(err);
-            } else {
-                res.render("clientes/clientes_agregar", { clientes });
             }
+            conn.query("SELECT documento FROM users_info", (err, documentos) => {
+                if (err) {
+                    res.json(err);
+                }
+                res.render("clientes/clientes_agregar", { clientes, documentos });
+            })
+            
         })
+
     });
 }
 
@@ -58,7 +64,13 @@ function editar(req, res) {
             if (err) {
                 res.json(err);
             }
-            res.render('clientes/clientes_editar', { info });
+            conn.query('SELECT documento FROM users_info WHERE idInfo = ?', [idInfo], (err, documentos) => {
+                if (err) {
+                    res.json(err);
+                }
+                res.render("clientes/clientes_editar", { info, documentos });
+            })
+            
         });
     });
 }

@@ -154,7 +154,7 @@
                             <h4 class="card-title" style="margin-bottom: 2%;">Editar insumo</h4>
                             <!--Start Card 1-->
                             <div class="card" style="width: 35%; border-radius: 0; margin-left: 20px;">
-                                <div class="card-body"> 
+                                <div class="card-body">
                                     {{#each insumos}}
                                     <form action="" method="post" id="formulario">
                                         <div class="mb-3">
@@ -179,14 +179,12 @@
                                                 <div class="form-floating mb-3">
                                                     <input type="number" class="form-control" id="stockInsumo"
                                                         style="border-radius: 0;" name="stockInsumo"
-                                                        value="{{stockInsumo}}">
+                                                        value="{{stockInsumo}}" min="1">
                                                     <div id="mensajeErrorStock"></div>
                                                     <label for="floatingInput">Stock</label>
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-floating mb-3">
@@ -265,35 +263,47 @@
     let stockInputs = document.querySelectorAll('input[name="stockInsumo"]');
     let mensajeErrorNombre = document.querySelector('#mensajeErrorNombre');
     let mensajeErrorStock = document.querySelector('#mensajeErrorStock');
-    
 
     nombreInputs.forEach(function (nombreInput) {
         nombreInput.addEventListener('blur', function () {
-            nombre = nombreInput.value;
+            validarNombre(nombreInput.value);
         });
     });
 
     stockInputs.forEach(function (stockInput) {
         stockInput.addEventListener('blur', function () {
-            stock = stockInput.value;
+            validarStock(stockInput.value);
         });
     });
 
     formulario.addEventListener('submit', function (event) {
-        if (nombre === "") {
-            event.preventDefault();
-            mostrarError(mensajeErrorNombre, 'Campo Obligatorio');
-        } else {
-            ocultarError(mensajeErrorNombre);
-        }
+        let nombreValido = validarNombre(nombreInputs[0].value);
+        let stockValido = validarStock(stockInputs[0].value);
 
-        if (stock === "") {
+        if (!nombreValido || !stockValido) {
             event.preventDefault();
-            mostrarError(mensajeErrorStock, 'Campo Obligatorio');
-        } else {
-            ocultarError(mensajeErrorStock);
         }
     });
+
+    function validarNombre(nombre) {
+        if (nombre === "") {
+            mostrarError(mensajeErrorNombre, 'Campo Obligatorio');
+            return false;
+        } else {
+            ocultarError(mensajeErrorNombre);
+            return true;
+        }
+    }
+
+    function validarStock(stock) {
+        if (stock === "") {
+            mostrarError(mensajeErrorStock, 'Campo Obligatorio');
+            return false;
+        } else {
+            ocultarError(mensajeErrorStock);
+            return true;
+        }
+    }
 
     function mostrarError(elemento, mensaje) {
         elemento.innerHTML = '<span class="icono fa fa-circle-xmark"></span>' + mensaje;
@@ -304,6 +314,7 @@
         elemento.innerHTML = '';
         elemento.style.display = 'none';
     }
+
 </script>
 {{!--
 <script>

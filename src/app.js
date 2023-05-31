@@ -18,18 +18,18 @@ const port = process.env.PORT
 
 //Especificar el directorio público
 app.use(express.static('public'))
-
+app.set('src',__dirname + '/src')
 app.use(bodyParser.urlencoded({
     extended: true
-  }));
-  app.use(bodyParser.json());
+}));
+app.use(bodyParser.json());
 
 // Motor de plantilla
-hbs.registerPartials(__dirname + '/views/partials', function (err) {});
+hbs.registerPartials(__dirname + '/views/partials', function (err) { });
 app.set('view engine', 'hbs')
 app.engine('.hbs', engine({
     extname: '.hbs',
-  }));
+}));
 app.set('views', __dirname + '/views')
 
 app.use(myconnection(mysql, {
@@ -38,7 +38,7 @@ app.use(myconnection(mysql, {
     password: '',
     port: '', //Aquí se coloca el puerto del MySQL en el panel del xampp, si usas wampserver dejarlo vacio 
     database: 'crudnodejs'
-  }, 'single'));
+}, 'single'));
 
 app.use('/', clientesRoutes);
 app.use('/', comprasRoutes);
@@ -49,107 +49,101 @@ app.use('/', reparacionesRoutes);
 app.use('/', rolesRoutes);
 app.use('/', ventasRoutes);
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.render('home', {
-        nombre:'home'
-    })
-}) 
-
-app.post('/enviar-dato', (req, res) => {
-    const carrito = req.body.carrito; // Obtener el dato enviado desde la vista del botón
-    console.log(carrito)
-    // Hacer lo que necesites con el dato
-    
-    // Enviar una respuesta al cliente si es necesario
-    res.send('Dato recibido correctamente');
-  });
-
-app.get('/home', (req, res)=>{
-    res.render('home', {
-        nombre:'Home'
+        nombre: 'home'
     })
 })
 
-app.get('/productos', (req, res)=>{
-   
+
+
+
+app.get('/home', (req, res) => {
+    res.render('home', {
+        nombre: 'Home'
+    })
+})
+
+app.get('/productos', (req, res) => {
+
     res.render('productos', {
-        nombre:'Productos'
+        nombre: 'Productos'
     })
 })
 
-app.get('/ProduZapatos', (req, res)=>{
-   
+app.get('/ProduZapatos', (req, res) => {
+
     res.render('ProduZapatos', {
-        nombre:'ProduZapatos'
+        nombre: 'ProduZapatos'
     })
 })
 
-app.get('/ProduBolsos', (req, res)=>{
-   
+app.get('/ProduBolsos', (req, res) => {
+
     res.render('ProduBolsos', {
-        nombre:'ProduBolsos'
+        nombre: 'ProduBolsos'
     })
 })
 
-app.get('/ProduRino', (req, res)=>{
-   
+app.get('/ProduRino', (req, res) => {
+
     res.render('ProduRino', {
-        nombre:'ProduRino'
+        nombre: 'ProduRino'
     })
 })
 
-app.get('/ProduMorral', (req, res)=>{
-   
+app.get('/ProduMorral', (req, res) => {
+
     res.render('ProduMorral', {
-        nombre:'ProduMorral'
+        nombre: 'ProduMorral'
     })
 })
 
-app.get('/ProduBilletera', (req, res)=>{
-   
+app.get('/ProduBilletera', (req, res) => {
+
     res.render('ProduBilletera', {
-        nombre:'ProduBilletera'
+        nombre: 'ProduBilletera'
     })
 })
 
-app.get('/ProduChaquetas', (req, res)=>{
-   
+app.get('/ProduChaquetas', (req, res) => {
+
     res.render('ProduChaquetas', {
-        nombre:'ProduChaquetas'
+        nombre: 'ProduChaquetas'
     })
 })
 
-app.get('/ProduCorreas', (req, res)=>{
-   
+app.get('/ProduCorreas', (req, res) => {
+
     res.render('ProduCorreas', {
-        nombre:'ProduCorreas'
+        nombre: 'ProduCorreas'
     })
 })
 
-app.get('/recomendaciones', (req, res)=>{
-   
+app.get('/recomendaciones', (req, res) => {
+
     res.render('recomendaciones', {
-        nombre:'Recomendaciones'
+        nombre: 'Recomendaciones'
     })
 })
 
-app.get('/sobre_nosotros', (req, res)=>{
-   
+app.get('/sobre_nosotros', (req, res) => {
+
     res.render('sobre_nosotros', {
-        nombre:'sobre_nosotros'
+        nombre: 'sobre_nosotros'
     })
 })
 
-app.get('/contactanos', (req, res)=>{
-   
+app.get('/contactanos', (req, res) => {
+
     res.render('contactanos', {
-        nombre:'contactanos'
+        nombre: 'contactanos'
     })
 })
 
-app.get('/dashboard', (req, res)=>{
+app.get('/dashboard', (req, res) => {
     res.render('dashboard', {
-        nombre:'Dashboard'
+        nombre: 'Dashboard'
     })
 })
 
@@ -158,29 +152,33 @@ app.get('/dashboard', (req, res)=>{
 
 
 //Login
-app.get('/Login', (req, res)=>{
+app.get('/Login', (req, res) => {
     res.render('Login', {
-        nombre:'Login'
+        nombre: 'Login'
     })
 })
 
-app.get('/Registrarse', (req, res)=>{
+app.get('/Registrarse', (req, res) => {
     res.render('Registrarse', {
-        nombre:'Registrarse'
+        nombre: 'Registrarse'
     })
 })
 
-app.get('/Recuperar_clave', (req, res)=>{
+app.get('/Recuperar_clave', (req, res) => {
     res.render('Recuperar_clave', {
-        nombre:'Recuperar_clave'
+        nombre: 'Recuperar_clave'
     })
 })
 
 
-  
+app.get('*',(req,res)=>{
+    res.render('404',{
+        nombre: 'Página no encontrada'
+    })
+})
 
 
 //verificar si el puerto esta escuchando
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`Escuchando por el puerto ${port}`)
 }) 
