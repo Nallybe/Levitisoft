@@ -146,15 +146,16 @@
 
                         <div class="row" style="margin-left: 8px;">
                             <div class="col-md-8">
-                                <input
+                                <input id="buscar-input"
                                     style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
-                                    class="form-control me-2" type="search" placeholder="Buscar Rol"
-                                    aria-label="Search">
+                                    class="form-control me-2" type="search" placeholder="Buscar Rol" aria-label="Search"
+                                    oninput="filtrarTabla()">
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-outline-success" type="submit"
-                                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"><i
-                                        class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i></button>
+                                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"
+                                    onclick="filtrarTabla()"><i class="fa-sharp fa-solid fa-magnifying-glass"
+                                        style="width: 100%;"></i></button>
                             </div>
                         </div>
                     </div>
@@ -166,7 +167,7 @@
                     </div>
                 </div>
                 <br>
-                <table class="table" style="text-align:center;">
+                <table id="tabla-roles" class="table" style="text-align:center;">
                     <thead style="background-color: #282d32; color:white;">
                         <tr>
                             <th>Id</th>
@@ -191,7 +192,7 @@
                             <td>
                                 <a href="EditarRol/{{idRoles}}" style="color: #292b2c;" class="boton-enviar"><i
                                         type="button" class="fa-sharp fa-solid fa-pen"></i></a>
-                                
+
 
                             </td>
                         </tr>
@@ -206,7 +207,27 @@
         <!--Inicio footer-->
         {{> footer}}
         <!--Fin footer-->
+        <script>
+            function filtrarTabla() {
+                var input = document.getElementById("buscar-input");
+                var filtro = input.value.toUpperCase();
+                var tabla = document.getElementById("tabla-roles");
+                var filas = tabla.getElementsByTagName("tr");
 
+                for (var i = 0; i < filas.length; i++) {
+                    var celdaRol = filas[i].getElementsByTagName("td")[1];
+
+                    if (celdaRol) {
+                        var textoRol = celdaRol.textContent || celdaRol.innerText;
+                        if (textoRol.toUpperCase().indexOf(filtro) > -1) {
+                            filas[i].style.display = "";
+                        } else {
+                            filas[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>

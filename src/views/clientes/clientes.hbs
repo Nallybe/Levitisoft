@@ -151,19 +151,20 @@
           <!--Start Botones sobre la tabla-->
           <div class="row">
             <div class="col-md-4">
-              <!--Start Buscar-->
+
               <div class="row" style="margin-left: 8px;">
                 <div class="col-md-8">
-                  <input style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
-                    class="form-control me-2" type="search" placeholder="Buscar Clientes" aria-label="Search">
+                  <input id="buscar-input"
+                    style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
+                    class="form-control me-2" type="search" placeholder="Buscar Documento" aria-label="Search"
+                    oninput="filtrarTabla()">
                 </div>
                 <div class="col-md-2">
                   <button class="btn btn-outline-success" type="submit"
-                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"><i
+                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;" onclick="filtrarTabla()"><i
                       class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i></button>
                 </div>
               </div>
-              <!--End Buscar-->
             </div>
             <div class="col-md-5">
               <!--Espacio entre botón buscar y registrar-->
@@ -178,7 +179,7 @@
           <!--End Botones sobre la tabla-->
 
           <!--Start Table-->
-          <table class="table">
+          <table class="table" id="tabla-clientes">
             <thead class="table" style="background-color: #282d32; color:white;">
               <tr style="text-align: center;">
                 <th>IdCliente</th>
@@ -226,6 +227,34 @@
 <!--////////////////////-->
 <!--START JS-->
 <!--////////////////////-->
+<script>
+  function filtrarTabla() {
+    var input = document.getElementById("buscar-input");
+    var filtro = input.value.toUpperCase();
+    var tabla = document.getElementById("tabla-clientes");
+    var filas = tabla.getElementsByTagName("tr");
+
+    for (var i = 0; i < filas.length; i++) {
+      var celdaDocumento = filas[i].getElementsByTagName("td")[1];
+
+      if (celdaDocumento) {
+        var textoDocumento = celdaDocumento.textContent || celdaDocumento.innerText;
+        if (textoDocumento.toUpperCase().indexOf(filtro) > -1) {
+          filas[i].style.display = "";
+        } else {
+          filas[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
+
+
+
+
+
+
+
 
 <!--JS Para el mensajito al pasar el mouse sobre el usuario-->
 <script src="js/bootstrap.bunle.min.js" type="text/javascript"></script>

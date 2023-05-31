@@ -138,20 +138,18 @@
                     <div class="col-md-4">
 
                         <div class="row" style="margin-left: 8px;">
-
                             <div class="col-md-8">
-
-                                <input
+                                <input id="buscar-input"
                                     style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
-                                    class="form-control me-2" type="search" placeholder="Buscar insumo" name="termino"
-                                    aria-label="Search">
+                                    class="form-control me-2" type="search" placeholder="Buscar Insumo"
+                                    aria-label="Search" oninput="filtrarTabla()">
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-outline-success" type="submit"
-                                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"><i
-                                        class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i></button>
+                                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"
+                                    onclick="filtrarTabla()"><i class="fa-sharp fa-solid fa-magnifying-glass"
+                                        style="width: 100%;"></i></button>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-md-5"></div>
@@ -163,7 +161,7 @@
                 </div>
 
                 <br>
-                <table class="table" style="text-align:center;">
+                <table class="table" style="text-align:center;" id="tabla-insumos">
                     <thead style="background-color: #282d32; color:white;">
                         <tr>
                             <th>Id</th>
@@ -184,13 +182,12 @@
                             <td class="p-3 text-center">{{stockInsumo}}</td>
                             <td class="p-3 text-center">{{estado}}</td>
                             <td>
-                                <a href="EditarInsumo/{{idInsumos}}"
-                                        style="color: #292b2c; " class="boton-insumo"><i type="button"
-                                            class="fa-sharp fa-solid fa-pen"></i></a></button>
-                                <form action="/EliminarInsumo" method="POST" class="boton-insumo" id="eliminarInsumoForm">
+                                <a href="EditarInsumo/{{idInsumos}}" style="color: #292b2c; " class="boton-insumo"><i
+                                        type="button" class="fa-sharp fa-solid fa-pen"></i></a></button>
+                                <form action="/EliminarInsumo" method="POST" class="boton-insumo"
+                                    id="eliminarInsumoForm">
                                     <input type="hidden" value="{{idInsumos}}" name="idInsumos">
-                                    <a type="button" onclick="alerta()"><i class="fa fa-trash"
-                                            style=""></i></a>
+                                    <a type="button" onclick="alerta()"><i class="fa fa-trash" style=""></i></a>
                                 </form>
 
                             </td>
@@ -226,6 +223,26 @@
                 document.getElementById("eliminarInsumoForm").submit();
             }
         });
+    }
+
+    function filtrarTabla() {
+        var input = document.getElementById("buscar-input");
+        var filtro = input.value.toUpperCase();
+        var tabla = document.getElementById("tabla-insumos");
+        var filas = tabla.getElementsByTagName("tr");
+
+        for (var i = 0; i < filas.length; i++) {
+            var celdaInsumo = filas[i].getElementsByTagName("td")[1];
+
+            if (celdaInsumo) {
+                var textoInsumo = celdaInsumo.textContent || celdaInsumo.innerText;
+                if (textoInsumo.toUpperCase().indexOf(filtro) > -1) {
+                    filas[i].style.display = "";
+                } else {
+                    filas[i].style.display = "none";
+                }
+            }
+        }
     }
 </script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -133,12 +133,14 @@
 
               <div class="row" style="margin-left: 8px;">
                 <div class="col-md-8">
-                  <input style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
-                    class="form-control me-2" type="search" placeholder="Buscar Venta" aria-label="Search">
+                  <input id="buscar-input"
+                    style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
+                    class="form-control me-2" type="search" placeholder="Buscar Venta" aria-label="Search"
+                    oninput="filtrarTabla()">
                 </div>
                 <div class="col-md-2">
                   <button class="btn btn-outline-success" type="submit"
-                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"><i
+                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;" onclick="filtrarTabla()"><i
                       class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i></button>
                 </div>
               </div>
@@ -151,7 +153,7 @@
             </div>
           </div>
           <br>
-          <table class="table" style="text-align:center;">
+          <table class="table" style="text-align:center;" id="tabla-ventas">
             <thead style="background-color: #282d32; color:white;">
               <tr>
                 <th>Id</th>
@@ -184,6 +186,27 @@
 <!--Inicio footer-->
 {{> footer}}
 <!--Fin footer-->
+<script>
+  function filtrarTabla() {
+    var input = document.getElementById("buscar-input");
+    var filtro = input.value.toUpperCase();
+    var tabla = document.getElementById("tabla-ventas");
+    var filas = tabla.getElementsByTagName("tr");
+
+    for (var i = 0; i < filas.length; i++) {
+      var celdaNombre = filas[i].getElementsByTagName("td")[1];
+
+      if (celdaNombre) {
+        var textoNombre = celdaNombre.textContent || celdaNombre.innerText;
+        if (textoNombre.toUpperCase().indexOf(filtro) > -1) {
+          filas[i].style.display = "";
+        } else {
+          filas[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <!--   Core JS Files   -->
