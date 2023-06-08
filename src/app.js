@@ -3,6 +3,7 @@ const hbs = require('hbs')
 const app = express()
 const { engine } = require('express-handlebars');
 const myconnection = require('express-myconnection');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 require('dotenv').config();
@@ -14,11 +15,12 @@ const productosRoutes = require('./routes/productos');
 const reparacionesRoutes = require('./routes/reparaciones');
 const rolesRoutes = require('./routes/roles');
 const ventasRoutes = require('./routes/ventas');
+const loginRoutes = require('./routes/login');
 const port = process.env.PORT
 
 //Especificar el directorio público
 app.use(express.static('public'))
-app.set('src',__dirname + '/src')
+app.set('src', __dirname + '/src')
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -39,6 +41,11 @@ app.use(myconnection(mysql, {
     port: '', //Aquí se coloca el puerto del MySQL en el panel del xampp, si usas wampserver dejarlo vacio 
     database: 'crudnodejs'
 }, 'single'));
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}))
 
 app.use('/', clientesRoutes);
 app.use('/', comprasRoutes);
@@ -48,6 +55,7 @@ app.use('/', productosRoutes);
 app.use('/', reparacionesRoutes);
 app.use('/', rolesRoutes);
 app.use('/', ventasRoutes);
+app.use('/', loginRoutes);
 
 app.get('/', (req, res) => {
     res.render('home', {
@@ -142,37 +150,18 @@ app.get('/contactanos', (req, res) => {
 })
 
 app.get('/dashboard', (req, res) => {
-    res.render('dashboard', {
-        nombre: 'Dashboard'
-    })
-})
+    if (req.session.loggedin) {
+      res.render('dashboard', { name: req.session.name });
+    } else {
+      res.redirect('/login');
+    }
+  });
 
 
 
 
-
-//Login
-app.get('/Login', (req, res) => {
-    res.render('Login', {
-        nombre: 'Login'
-    })
-})
-
-app.get('/Registrarse', (req, res) => {
-    res.render('Registrarse', {
-        nombre: 'Registrarse'
-    })
-})
-
-app.get('/Recuperar_clave', (req, res) => {
-    res.render('Recuperar_clave', {
-        nombre: 'Recuperar_clave'
-    })
-})
-
-
-app.get('*',(req,res)=>{
-    res.render('404',{
+app.get('*', (req, res) => {
+    res.render('404', {
         nombre: 'Página no encontrada'
     })
 })

@@ -10,6 +10,19 @@ function listar(req, res) {
   });
 }
 
+function listarApi(req, res) {
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM tbl_roles', (err, roles) => {
+      if (err) {
+        res.json(err);
+      }
+      //res.render('roles/roles', { roles });
+      res.json(roles);
+    });
+  });
+}
+
+
 function crear(req, res) {
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM tbl_permisos", (err, permisos) => {
@@ -210,6 +223,7 @@ function eliminarAsignacion(req, res) {
 
 module.exports = {
   listar: listar,
+  listarApi: listarApi,
   crear: crear,
   registrar: registrar,
   editar: editar,

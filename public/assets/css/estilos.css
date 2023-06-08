@@ -163,3 +163,46 @@ main {
 		width: 100%;
 	}
 }
+
+/* Estilos para pantallas grandes */
+@media screen and (min-width: 992px) {
+	/* Estilos para el contenedor del carrusel */
+	#carousel {
+	  height: 500px;
+	}
+  
+	/* Estilos para las cartas */
+	.carta {
+	  width: 20rem;
+	  height: 280px;
+	}
+  }
+  
+  /* Estilos para pantallas medianas */
+  @media screen and (max-width: 991px) {
+	/* Estilos para el contenedor del carrusel */
+	#carousel {
+	  height: 400px;
+	}
+  
+	/* Estilos para las cartas */
+	.carta {
+	  width: 17rem;
+	  height: 250px;
+	}
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media screen and (max-width: 767px) {
+	/* Estilos para el contenedor del carrusel */
+	#carousel {
+	  height: 300px;
+	}
+  
+	/* Estilos para las cartas */
+	.carta {
+	  width: 14rem;
+	  height: 200px;
+	}
+  }
+  

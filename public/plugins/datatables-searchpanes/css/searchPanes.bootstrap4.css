@@ -216,7 +216,7 @@ div.dtsp-panesContainer div.dtsp-searchPanes {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-content: flex-start;
   align-items: stretch;
   clear: both;

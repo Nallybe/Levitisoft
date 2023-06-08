@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="assets/img/icono.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Iniciar sesion
+    Iniciar sesión
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
     name='viewport' />
@@ -16,101 +17,140 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- CSS Files -->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/footer.css"> 
+  <link rel="stylesheet" href="assets/css/footer.css">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/css/login.css" rel="stylesheet" />
   <!--Bootstrap-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <br>
+  <div class="login-wrap">
+    <div class="login-html">
+      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar
+        sesión</label>
+      <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarse</label>
 
-<div class="container">
-  <div class="frame">
-    <div class="nav">
-      <ul class"links"> 
-        <li class="signin-active"><a class="btn">Iniciar sesion</a></li>
-        <li class="signup-inactive"><a class="btn">Registrarse </a></li>
-      </ul>
-    </div>
-    <div ng-app ng-init="checked = false">
-				        <form class="form-signin" action="" method="post" name="form">
-          <label for="username">Nombre de usuario</label>
-          <input class="form-styling" type="text" name="username" placeholder=""/>
-          <label for="password">Contraseña</label>
-          <input class="form-styling" type="password" name="password" placeholder=""/>
-          <input type="checkbox" id="checkbox"/>
-          <label for="checkbox" ><span class="ui"></span>Mantener iniciado</label>
-          <div class="btn-animate">
-            <a class="btn-signin">Ingresar</a>
+      <div class="login-form">
+        <div class="sign-in-htm">
+          <form action="/login" method="post">
+            <div class="group">
+              <label for="correo" class="label">Correo</label>
+              <input id="correo" type="email" class="input" name="correol" required>
+            </div>
+            <div class="group">
+              <label for="pass" class="label">Password</label>
+              <div class="password-input">
+                <input id="pass" type="password" class="input" data-type="password" name="passswordl" required>
+                <span class="toggle-password">
+                  <i class="fas fa-eye"></i>
+                </span>
+              </div>
+            </div>
+            <div class="group">
+              <input id="check" type="checkbox" class="check" checked>
+              <label for="check"><span class="icon"></span>Mantenerme iniciado</label>
+            </div>
+            {{#if errorl}}
+            <p class="errorl"><i class="fa fa-xmark"></i>* {{errorl}}</p>
+            {{/if}}
+            <div class="group">
+              <input type="submit" class="button" value="Iniciar sesión">
+            </div>
+            <div class="group">
+              <a href="home" class="buttonC text-center" value="Cancelar" style="text-decoration: none;">CANCELAR</a>
+            </div>
+          </form>
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <a href="#forgot">Olvidaste tu contraseña?</a>
           </div>
-				        </form>
-        
-				        <form class="form-signup" action="" method="post" name="form">
-          <label for="fullname">Nombre de usuario</label>
-          <input class="form-styling" type="text" name="fullname" minlength="5" maxlength="40" required placeholder=""/>
-          <label for="email">Correo electronico</label>
-          <input class="form-styling" type="email" name="email" placeholder=""/>
-          <label for="password" minlength="8" maxlength="15" required>Contraseña</label>
-          <input class="form-styling" type="password" name="password" placeholder=""/>
-          <label for="confirmpassword" minlength="8" maxlength="15" required>Confirmar contraseña</label>
-          <input class="form-styling" type="password" name="confirmpassword" placeholder=""/>
-          <a ng-click="checked = !checked" class="btn-signup" href="#" style="text-decoration: none;">Registrarse</a>
-				        </form>
-      
-            <div  class="success">
-              <svg width="270" height="270" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-       viewBox="0 0 60 60" id="check" ng-class="checked ? 'checked' : ''">
-                 <path fill="#ffffff" d="M40.61,23.03L26.67,36.97L13.495,23.788c-1.146-1.147-1.359-2.936-0.504-4.314
-                  c3.894-6.28,11.169-10.243,19.283-9.348c9.258,1.021,16.694,8.542,17.622,17.81c1.232,12.295-8.683,22.607-20.849,22.042
-                  c-9.9-0.46-18.128-8.344-18.972-18.218c-0.292-3.416,0.276-6.673,1.51-9.578"/>
-                <div class="successtext">
-                   <h4> Gracias por registrarte! Revisa tu correo electrónico para confirmar.</h4>
-                </div>
-                <div>
-               <img src="assets/img/google-mail-icon-logo-isolated-on-transparent-background-free-vector-removebg-preview.png">
-             </div>
+        </div>
+
+        <div class="sign-up-htm">
+          <form action="/register" method="post">
+            <div class="group">
+              <label for="pass" class="label">Correo</label>
+              <input id="correo" type="email" class="input" name="correo" required>
+            </div>
+            <div class="group">
+              <label for="pass" class="label">contraseña</label>
+              <div class="password-input">
+                <input id="password" type="password" class="input" data-type="password" name="password" required>
+                <span class="toggle-password">
+                  <i class="fas fa-eye"></i>
+                </span>
+              </div>
+            </div>
+            <div class="group">
+              <label for="pass" class="label">Repetir contraseña</label>
+              <div class="password-input">
+                <input id="pass" type="password" class="input" data-type="password" required>
+                <span class="toggle-password">
+                  <i class="fas fa-eye"></i>
+                </span>
+              </div>
+            </div>
+            <div class="group">
+              <label for="rol" class="label">Asignar rol</label>
+              <select name="rol" id="rol" class="input">
+                {{#each roles}}
+                <option value="{{idRoles}}">{{nombreRoles}}</option>
+                {{/each}}
+              </select>
+            </div>
+            {{#if error}}
+            <p class="error"><i class="fa fa-xmark"></i>* {{error}}</p>
+            {{/if}}
+            <div class="group">
+              <input type="submit" class="button" value="Registrarse">
+            </div>
+            <div class="group">
+              <a href="home" class="buttonC text-center" value="Cancelar" style="text-decoration: none;">CANCELAR</a>
+            </div>
+          </form>
+        </div>
       </div>
-      
-      <div class="forgot">
-        <a href="Recuperar_clave">Olvidaste tu contraseña?</a>
-      </div>
-      
-      <div>
-        <div class="cover-photo"></div>
-        <div class="profile-photo"></div>
-        <h1 class="welcome">Welcome</h1>
-        <a class="btn-goback" value="Refresh" onClick="history.go()" href="dashboard">Go</a>
-      </div>
+
+    </div>
   </div>
-    
-  {{!-- <a id="refresh" value="Refresh" onClick="history.go()">
-    <svg class="refreshicon"   version="1.1" id="Capa_1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         width="25px" height="25px" viewBox="0 0 322.447 322.447" style="enable-background:new 0 0 322.447 322.447;"
-         xml:space="preserve">
-         <path  d="M321.832,230.327c-2.133-6.565-9.184-10.154-15.75-8.025l-16.254,5.281C299.785,206.991,305,184.347,305,161.224
-                c0-84.089-68.41-152.5-152.5-152.5C68.411,8.724,0,77.135,0,161.224s68.411,152.5,152.5,152.5c6.903,0,12.5-5.597,12.5-12.5
-                c0-6.902-5.597-12.5-12.5-12.5c-70.304,0-127.5-57.195-127.5-127.5c0-70.304,57.196-127.5,127.5-127.5
-                c70.305,0,127.5,57.196,127.5,127.5c0,19.372-4.371,38.337-12.723,55.568l-5.553-17.096c-2.133-6.564-9.186-10.156-15.75-8.025
-                c-6.566,2.134-10.16,9.186-8.027,15.751l14.74,45.368c1.715,5.283,6.615,8.642,11.885,8.642c1.279,0,2.582-0.198,3.865-0.614
-                l45.369-14.738C320.371,243.946,323.965,236.895,321.832,230.327z"/>
-    </svg>
-  </a> --}}
-</div>
+<br>
+
 </body>
-<!--Fin cuerpo-->
 
 <!--   Core JS Files   -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('.toggle-password').click(function () {
+      var passwordField = $(this).prev('input');
+      var fieldType = passwordField.attr('type');
+
+      if (fieldType === 'password') {
+        passwordField.attr('type', 'text');
+        $(this).find('i').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+      } else {
+        passwordField.attr('type', 'password');
+        $(this).find('i').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+      }
+    });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap.min.js"></script>
 <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-<script src="assets/js/plugins/login.js"></script>
+
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
@@ -130,4 +170,7 @@
 </script>
 
 <!--Bootstrap-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</html>

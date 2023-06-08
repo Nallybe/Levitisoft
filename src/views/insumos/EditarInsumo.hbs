@@ -44,11 +44,13 @@
                     Levitisoft
                 </a>
             </div>
+            {{#if name}}
             <div class="logo">
-                <a href="" class="simple-text" style="color:white; ">
-                    <img src="/assets/img/admin4.png" style="width: 34px;"> Administrador
+                <a href="" class="simple-text" style="color:white;">
+                    <i class="fa-solid fa-circle-user fa-2xl" style="width: 45px;"> </i>{{name}}
                 </a>
             </div>
+            {{/if}}
             <div class="sidebar-wrapper" id="sidebar-wrapper">
                 <ul class="nav">
                     <li>
@@ -135,7 +137,7 @@
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <a class="nav-link" href="/home">
+                        <a class="nav-link" href="/logout">
                             <i class="fa fa-right-from-bracket" style="margin-right:20px;"></i>
                             <p>
                                 <span class="d-lg-none d-md-block">Salir</span>
