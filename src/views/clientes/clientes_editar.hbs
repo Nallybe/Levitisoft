@@ -70,13 +70,14 @@
   <!--Start Navbar-->
   <!--////////////////////-->
 
-  <div class="wrapper ">
+  <div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
     <div class="sidebar" data-color="black">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="" class="simple-text" style="color:white;">
+        <a href="/dashboard" class="simple-text" style="color:white;">
           Levitisoft
         </a>
       </div>
@@ -154,7 +155,7 @@
     </div>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+      <nav class="navbar navbar-expand navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -197,86 +198,77 @@
             <div class="card-body">
               <h4 class="card-title" style="margin-bottom: 2%;">Actualizar información del usuario</h4>
               <!--Start Card 1-->
-              <div class="card" style="width: 35%; border-radius: 0; margin-left: 20px;">
-                <div class="card-body">
-                  {{#each info}}
-                  <form method="post" action="" id="formulario">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" style="border-radius: 0;"
-                            value="{{idInfo}}" disabled>
-                          <label for="floatingInput">IdInfo</label>
-                        </div>
-                      </div>
+              {{#each info}}
+              <form method="post" action="" id="formulario">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="nombre" style="border-radius: 0;" value="{{nombre}}"
+                        name="nombre">
+                      <div id="mensajeErrorNombre"></div>
+                      <label for="floatingInput">Nombre</label>
                     </div>
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="nombre" style="border-radius: 0;"
-                            value="{{nombre}}" name="nombre">
-                          <div id="mensajeErrorNombre"></div>
-                          <label for="floatingInput">Nombre</label>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="documento" style="border-radius: 0;"
-                            value="{{documento}}" name="documento">
-                          <div id="mensajeErrorDocumento"></div>
-                          <label for="floatingInput">Documento</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="telefono" style="border-radius: 0;"
-                            value="{{telefono}}" name="telefono">
-                          <div id="mensajeErrorTelefono"></div>
-                          <label for="floatingInput">Telefono</label>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-floating mb-3">
-                          <select class="form-control" id="estado" style="border-radius: 0;" name="estado">
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                          </select>
-                          <label for="floatingInput">Estado</label>
-                        </div>
-                      </div>
-
-                    </div>
-                </div>
-              </div>
-
-              <div style="margin-top: 1%; margin-left:20px;">
-                <div style="margin-top: 1%; width: 35%;">
-                  <div class="d-grid gap-2">
-
-                    <button type="submit" class=" btn btn-success" style="border-radius: 0; margin-bottom: 1px;"
-                      id="boton">
-                      Actualizar</a>
                   </div>
-                  <a class="btn btn-danger" href="/clientes" style="border-radius: 0; margin-top: 1px; width:100%;"
-                    type="button">Cancelar</a>
+                  <div class="col-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="documento" style="border-radius: 0;"
+                        value="{{documento}}" name="documento">
+                      <div id="mensajeErrorDocumento"></div>
+                      <label for="floatingInput">Documento</label>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              </form>
-              {{/each}}
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="telefono" style="border-radius: 0;"
+                        value="{{telefono}}" name="telefono">
+                      <div id="mensajeErrorTelefono"></div>
+                      <label for="floatingInput">Telefono</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-floating mb-3">
+                      <select class="form-control" id="estado" style="border-radius: 0;" name="estado">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                      </select>
+                      <label for="floatingInput">Estado</label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div style="margin-top: 1%; margin-left:20px;">
+                  <div style="margin-top: 1%; width: 35%;">
+                    <div class="d-grid gap-2">
+
+                      <button type="submit" class=" btn btn-success" style="border-radius: 0; margin-bottom: 1px;"
+                        id="boton">
+                        Actualizar</a>
+                    </div>
+                    <a class="btn btn-danger" href="/clientes" style="border-radius: 0; margin-top: 1px; width:100%;"
+                      type="button">Cancelar</a>
+                  </div>
+                </div>
+                <br>
             </div>
           </div>
+
+
+          </form>
+          {{/each}}
         </div>
-        {{>footer}}
     </div>
-    <!--End Form&Card-->
+  </div>
+  </div>
+  <!--End Form&Card-->
 
 
 
 
-    </center>
-    <!--FIN CUERPO-->
+  </center>
+  <!--FIN CUERPO-->
 </body>
 
 

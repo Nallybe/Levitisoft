@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
 {{> header }}
 
-<body style="background-color: #E3E3E3;">
-    {{>navbar}}
+<body>
+    <!-- navbar-->
+    <header class="header bg-white">
+        <div class="container px-lg-3">
+            {{> navbar}}
+        </div>
+    </header>
     <style>
         .carta {
             width: 15rem;
@@ -27,150 +30,200 @@
         a {
             text-decoration: none;
         }
-
-        a:link {
-            color: #000000;
-            /* color del enlace no visitado */
-        }
-
-        a:visited {
-            color: #000000;
-            /* color del enlace visitado */
-        }
     </style>
-    <center>
-        <h3>Productos</h3>
-        <h5>Categorias</h5>
-    </center>
-    <br>
-    <div class="contenedorcarta row" style="width: 90%; ">
 
-        <div class="col-3">
-            <a href="ProduBolsos"><div class="carta card" style="width: 15rem; ">
-                <center><img
-                            src="https://scontent.fpei1-1.fna.fbcdn.net/v/t1.6435-9/46482479_434331350431824_2950248945843961856_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeEsx4dwHF4nDCPY_vtlVfMZ87QgQ6zLuJvztCBDrMu4mw1o3zh4jmw0zScTsPcZg_iIYr1kDO_1kcEb2tp5KJjX&_nc_ohc=AoM6zmYtJpMAX-vI0i5&_nc_oc=AQlIWSFHY_kj0Q58-tkRd2iWotPU_ivGt4M-QQK38ZzQC2r5adKrTmFS7AbIKrgkSVo&_nc_ht=scontent.fpei1-1.fna&oh=00_AfCPUwEZ_QHLBBFr7bXajJGc8nYHFA8Fnyn8pOxpHnifpw&oe=6477D40C"
-                            class="imagen card-img-top" alt="..." style="width:55%; margin-top:7px;"></center>
-                <div class="card-body">
-                    <h5 class="card-title">Bolsos</h5>
-                    <p class="card-text"></p>
+    <section class="py-3">
+        <header class="text-center mb-4">
+            <h2>Productos</h2>
+        </header>
+        <div class="container p-0">
+            <div class="row">
 
-                </div>
-            </div></a>
-        </div>
+                <!-- SHOP LISTING-->
+                <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+                    <div class="row">
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product productosI text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosBolsos/Bolsos3.jpg"
+                                            alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Kui Ye Chen’s AirPods</a></h6>
+                                <p class="small text-muted">$250</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosBilletera/Billeteras1.jpg"
+                                            alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Air Jordan 12 gym red</a></h6>
+                                <p class="small text-muted">$300</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-primary"></div><a class="d-block"
+                                        href="detail.html"><img class="img-fluid "
+                                            src="assets/img/productosChaquetas/Chaquetas4.jpg" alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Cyan cotton t-shirt</a></h6>
+                                <p class="small text-muted">$25</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosCorrea/Correas2.jpg"
+                                            alt="..."></a>
 
-        <div class="col-3">
-            <a href="ProduCorreas"><div class="carta card">
-                <center><img style="width:54%; margin-top:7px;"
-                            src="assets/img/productosCorrea/Correas1.jpg"
-                            class="imagen card-img-top" alt="..."></center>
-                <div class="card-body">
-                    <h5 class="card-title">Correas</h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div></a>
-        </div>
-
-        <div class="col-3">
-            <a href="ProduChaquetas"><div class="carta card">
-                <center><img style="width:37%; margin-top: 7px;"
-                            src="https://scontent.fpei3-1.fna.fbcdn.net/v/t1.6435-9/46456303_432731383925154_3283544158974771200_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeGXe-Z5IJuOsyGK3abTOjAikqY9opWaVqeSpj2ilZpWp3M79n-eua3NuKL_uh3Zs0OS9Hdy5xh9Ce1Spx18lxBR&_nc_ohc=uWu6zk4AsLQAX-VB2QG&_nc_ht=scontent.fpei3-1.fna&oh=00_AfAXeqw46rWIpahkmh-RddkzODZFtaD8HQVBMxIAgRqKFg&oe=6477C09B"
-                            class="imagen card-img-top" alt="..."></center>
-                <div class="card-body">
-                    <h5 class="card-title">Chaquetas</h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div></a>
-        </div>
-
-        <div class="col-3">
-            <a href="ProduBilletera"><div class="carta card">
-                <center><img style="width:67%;" src="assets/img/billetera.jpeg" class="imagen card-img-top"
-                            alt="...">
-                    </center>
-                <div class="card-body">
-                    <h5 class="card-title">Billeteras</h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div></a>
-        </div>
-    </div>
-    <div class="contenedorcarta row" style="width: 90%;  padding-top:40px;">
-        <br>
-        <div class="col-3">
-            <a href="ProduRino"><div class="carta card" style="width: 15rem; ">
-                <center><img
-                            src="https://scontent.fpei3-1.fna.fbcdn.net/v/t1.6435-9/46357880_432730690591890_5034854208206012416_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeGe3iRsg2XlLsqBWVF7iYW_NxTUTyy_ppY3FNRPLL-mlu_Pfc60_RbOvmG-UscftijAAZrvhMle794Wt53DrHZy&_nc_ohc=_6YbBZK6QMkAX-wWLIB&_nc_ht=scontent.fpei3-1.fna&oh=00_AfCNxianaG1fUMXV0Ywk9ZMvc4Ru_mKTsdVxnTP8WgX5-g&oe=6477C9C9"
-                            class="imagen card-img-top" alt="..." style="width:55%; margin-top:7px;"></center>
-                <div class="card-body">
-                    <h6 class="card-title">Riñoneras</h6>
-                    <p class="card-text"></p>
-
-                </div>
-            </div></a>
-        </div>
-
-        <div class="col-3">
-            <a href="ProduMorral"><div class="carta card">
-                <center><img style="width:55%; margin-top:7px;" src="https://scontent.fpei3-1.fna.fbcdn.net/v/t1.6435-9/46459157_432730253925267_3628687146765778944_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeEqH7SHQ2r3YaQGIwLG4H4rBAtwbCwJePQEC3BsLAl49Piqyi4chvoNdHq1R-OZB8sJu9D6sk2qp2z9KNdh-dgq&_nc_ohc=BmGeZQJMNoIAX9HL5u6&_nc_ht=scontent.fpei3-1.fna&oh=00_AfD6k3QsR1UbHnNJTYOQVCIAlkaWlOPTPmVVsesWMCe4KA&oe=6477C78E" class="imagen card-img-top"
-                            alt="...">
-                    </center>
-                <div class="card-body">
-                    <h5 class="card-title">Morrales</h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div></a>
-        </div>
-
-        <div class="col-3">
-            <a href="ProduZapatos
-            "><div class="carta card">
-                <center><img style="width:95%; margin-top:7px;"
-                            src="https://scontent.fpei3-1.fna.fbcdn.net/v/t39.30808-6/305847861_1345593272638956_520187308498056155_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeHEnJQTG3UHvPQmq_aiSEiku0dcGMGa2827R1wYwZrbzRDvaM6z20746cy4tillRLUXP9bUQ3cGNcRnLSpEtUCQ&_nc_ohc=D9kwgIAFvBQAX_877iQ&_nc_ht=scontent.fpei3-1.fna&oh=00_AfBxA-QDeDSJPMbSlKE_2UAsOR4VBzFHRYo3nsRx2XLKRg&oe=64564286"
-                            class="imagen card-img-top" alt="..."></center>
-                <div class="card-body">
-                    <h5 class="card-title">Zapatos</h5>
-                    <p class="card-text"></p>
-
-                </div>
-            </div></a>
-        </div>
-
-        <div class="col-3">
-            <a href="">
-                <div class="carta card">
-                    <center><img style="width:55%;"
-                            src="https://http2.mlstatic.com/D_NQ_NP_797779-MCO50098202559_052022-O.jpg"
-                            class="imagen card-img-top" alt="..."></center>
-                    <div class="card-body">
-                        <h5 class="card-title">Accesorios</h5>
-                        <p class="card-text"></p>
-
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Timex Unisex Originals</a></h6>
+                                <p class="small text-muted">$351</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-info"></div><a class="d-block"
+                                        href="detail.html"><img class="img-fluid "
+                                            src="assets/img/productosMorral/Morral1.jpg" alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Red digital smartwatch</a></h6>
+                                <p class="small text-muted">$250</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosRiñoneras/Riñoneras1.jpg"
+                                            alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Nike air max 95</a></h6>
+                                <p class="small text-muted">$300</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosZapat/Zapatos2.jpg"
+                                            alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Joemalone Women prefume</a></h6>
+                                <p class="small text-muted">$25</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosCorrea/Correas1.jpg"
+                                            alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Apple Watch</a></h6>
+                                <p class="small text-muted">$351</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-danger"></div><a class="d-block"
+                                        href="detail.html"><img class="img-fluid "
+                                            src="assets/img/productosChaquetas/Chaquetas7.jpg" alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Men silver Byron Watch</a></h6>
+                                <p class="small text-muted">$351</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-primary"></div><a class="d-block"
+                                        href="detail.html"><img class="img-fluid "
+                                            src="assets/img/productosBolsos/Bolsos5.jpg" alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Ploaroid one step camera</a></h6>
+                                <p class="small text-muted">$351</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosZapat/Zapatos4.jpg"
+                                            alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Gray Nike running shoes</a></h6>
+                                <p class="small text-muted">$351</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img
+                                            class="img-fluid " src="assets/img/productosRiñoneras/Riñoneras2.jpg"
+                                            alt="..."></a>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Black DSLR lense</a></h6>
+                                <p class="small text-muted">$351</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
+            <nav aria-label="Page navigation example" class="Page">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
+    </section>
+    {{>footer}}
+    <!-- JavaScript files-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="vendor/nouislider/nouislider.min.js"></script>
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="js/front.js"></script>
+    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    </div>
-    <div class="contenedorcarta row" style="width: 90%;  padding-top:40px;">
-        <br>
-        <div class="col-3">
-            <a href=""><div class="carta card" style="width: 15rem; ">
-                <center><img
-                            src="https://http2.mlstatic.com/D_NQ_NP_888668-MCO46639076121_072021-W.jpg"
-                            class="imagen card-img-top" alt="..." style="width:55%; margin-top:7px;"></center>
-                <div class="card-body">
-                    <h6 class="card-title">Sombreros</h6>
-                    <p class="card-text"></p>
-
-                </div>
-            </div></a>
-        </div>
-    </div>
 </body>
-{{>footer}}
 
 </html>

@@ -220,6 +220,10 @@ function logout(req, res) {
   res.redirect('/home');
 }
 
+function olvido(req,res){
+  res.render('olvidar_contrase')
+}
+
 module.exports = {
   login,
   crear,
@@ -227,5 +231,6 @@ module.exports = {
   auth,
   registro,
   registroinfo,
-  logout
+  logout, 
+  olvido
 };

@@ -1,5 +1,3 @@
-const Swal = require('sweetalert2');
-
 function listar(req, res) {
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM tbl_insumos', (err, insumos) => {
@@ -8,6 +6,7 @@ function listar(req, res) {
       }
       res.render('insumos/insumos', { insumos });
     });
+    
   });
 }
 
@@ -22,6 +21,7 @@ function crear(req, res) {
     })
   });
 }
+
 function registrar(req, res) {
   const data = req.body;
   //console.log(data)
@@ -29,7 +29,7 @@ function registrar(req, res) {
     nombreInsumo: data.nombreInsumo,
     medida: data.medidaInsumo,
     stockInsumo: data.stockInsumo,
-    estado: data.estadoInsumo,
+    estado: 'A',
   };
   req.getConnection((err, conn) => {
     conn.query(
@@ -47,6 +47,7 @@ function registrar(req, res) {
     );
   });
 }
+
 function editar(req, res) {
   const idInsumos = req.params.idInsumos;
 
@@ -59,6 +60,7 @@ function editar(req, res) {
     });
   });
 }
+
 function actualizar(req, res) {
   const idInsumos = req.params.idInsumos;
   const data = req.body;

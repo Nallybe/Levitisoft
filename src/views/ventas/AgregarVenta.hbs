@@ -5,13 +5,14 @@
 
 <body>
     <!--Barra de navegación-->
-    <div class="wrapper ">
+    <div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
         <div class="sidebar" data-color="black">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
             <div class="logo">
-                <a href="" class="simple-text" style="color:white;">
+                <a href="dashboard" class="simple-text" style="color:white;">
                     Levitisoft
                 </a>
             </div>
@@ -89,7 +90,7 @@
         </div>
         <div class="main-panel" id="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+            <nav class="navbar navbar-expand navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
                         <div class="navbar-toggle">
@@ -122,87 +123,77 @@
                 <div class="container" style="margin-top: 80px;">
 
                     <!--Start Form&Card-->
-                    <div class="card" style="width: 100%; border-radius: 0;">
+                    <div class="card" style="width: 85%; border-radius: 0;">
                         <div class="card-body">
                             <h4 class="card-title" style="margin-bottom: 2%;">Registrar venta</h4>
                             <!--Start Card 1-->
-                            <div class="card" style="width: 58%; border-radius: 0; margin-left: 20px;">
-                                <div class="card-body">
-                                    <form action="" method="post" id="formulario">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <div class="form-floating mb-3">
+                            <form action="" method="post" id="formulario">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <div class="form-floating mb-3">
 
-                                                        <select class="form-control" id="nombre"
-                                                            style="border-radius: 0;" name="nombre">
-                                                            {{#each nombre}}
-                                                            <option value="{{nombre}}">{{nombre}}</option>
+                                                <select class="form-control" id="nombre" style="border-radius: 0;"
+                                                    name="nombre">
+                                                    {{#each nombre}}
+                                                    <option value="{{nombre}}">{{nombre}}</option>
 
-                                                            {{/each}}
-                                                        </select>
+                                                    {{/each}}
+                                                </select>
 
-                                                        <label for="floatingInput">Nombre</label>
+                                                <label for="floatingInput">Nombre</label>
 
-                                                    </div>
-                                                </div>
                                             </div>
-
-                                            <div class="col-6">
-                                                <div class="form-floating mb-3">
-                                                    <a href="AgregarProduc" class="btn btn-info">Productos</a>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-floating mb-3">
-
-                                                        <input type="text" class="form-control" id="totalInput"
-                                                            style="border-radius: 0;" name="total">
-
-                                                        <label for="floatingInput">Total</label>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-3">
-                                                    <div class="form-floating mb-3">
-
-                                                        <select class="form-control" id="floatingInput"
-                                                            style="border-radius: 0;" name="estado">
-                                                            <option value="Entregado">Entregado</option>
-                                                            <option value="Registrado">Registrado</option>
-                                                            <option value="Entregado_garantia">Entregado con garantia
-                                                            </option>
-                                                        </select>
-                                                        <label for="floatingInput">Estado</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-floating mb-3">
-
-                                                        <input type="date" class="form-control" id=" floatingInput"
-                                                            style="border-radius: 0;" name="fecha" required>
-
-                                                        <label for="floatingInput">Fecha</label>
-
-                                                    </div>
-                                                </div>
-                                                <input type="text" class="form-control" id="IdProductos"
-                                                    style="border-radius: 0;" name="IdProductos" hidden>
-                                                <input type="text" class="form-control" id="cantidadProductos"
-                                                    style="border-radius: 0;" name="cantidadProductos" hidden>
-                                            </div>
-
                                         </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <a href="AgregarProduc" class="btn btn-info">Productos</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-floating ">
+
+                                                <input type="text" class="form-control" id="totalInput"
+                                                    style="border-radius: 0;" name="total">
+
+                                                <label for="floatingInput">Total</label>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <div class="form-floating ">
+
+                                                <select class="form-control" id="floatingInput"
+                                                    style="border-radius: 0;" name="estado">
+                                                    <option value="Entregado">Entregado</option>
+                                                    <option value="Registrado">Registrado</option>
+                                                    <option value="Entregado_garantia">Entregado con garantia
+                                                    </option>
+                                                </select>
+                                                <label for="floatingInput">Estado</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-floating ">
+
+                                                <input type="date" class="form-control" id=" floatingInput"
+                                                    style="border-radius: 0;" name="fecha" required>
+
+                                                <label for="floatingInput">Fecha</label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" id="IdProductos" style="border-radius: 0;"
+                                        name="IdProductos" hidden>
+                                    <input type="text" class="form-control" id="cantidadProductos"
+                                        style="border-radius: 0;" name="cantidadProductos" hidden>
                                 </div>
-                            </div>
-
                         </div>
-
-
-
-
 
                         <div style="margin-top: 1%; margin-left:20px;">
                             <div style="margin-top: 1%; width: 35%;">
@@ -217,15 +208,23 @@
                                 <br>
                             </div>
                         </div>
-                        </form>
                         <br>
                     </div>
 
                 </div>
 
-                <br><br><br><br>
-                {{>footer}}
+
+
+
+
+
+                </form>
+                <br>
         </div>
+
+    </div>
+
+    </div>
     </div>
 
 

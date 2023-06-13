@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="perfect-scrollbar-on">
 
 {{>headerD}}
 <style>
@@ -27,13 +27,14 @@
 </style>
 
 <!--Barra de navegación-->
-<div class="wrapper ">
+<div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
     <div class="sidebar" data-color="black">
         <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
         <div class="logo">
-            <a href="" class="simple-text" style="color:white;">
+            <a href="dashboard" class="simple-text" style="color:white;">
                 Levitisoft
             </a>
         </div>
@@ -111,7 +112,7 @@
     </div>
     <div class="main-panel" id="main-panel">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+        <nav class="navbar navbar-expand navbar-absolute">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
                     <div class="navbar-toggle">
@@ -121,7 +122,7 @@
                             <span class="navbar-toggler-bar bar3"></span>
                         </button>
                     </div>
-                    <a class="navbar-brand" href="#" style="margin-left: 10px;">Roles</a>
+                    <a class="navbar-brand" href="roles" style="margin-left: 10px;">Roles</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
                     aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -140,27 +141,29 @@
             </div>
         </nav>
         <!--Barra de navegación-->
-        <br><br><br><br>
+        <br><br><br>
         <center>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-
                         <div class="row" style="margin-left: 8px;">
-                            <div class="col-md-8">
+                            <div class="col-md-8 col-9">
                                 <input id="buscar-input"
-                                    style="height: 65%; border-radius: 0; margin-top: 4px; width: 60%; margin-right: 0;"
+                                    style="height: 100%; border-radius: 0; margin-top: 4px; width: 100%; margin-right: 0;"
                                     class="form-control me-2" type="search" placeholder="Buscar Rol" aria-label="Search"
                                     oninput="filtrarTabla()">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-3 pt-2">
                                 <button class="btn btn-outline-success" type="submit"
-                                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;"
-                                    onclick="filtrarTabla()"><i class="fa-sharp fa-solid fa-magnifying-glass"
-                                        style="width: 100%;"></i></button>
+                                    style="height: 100%; border-radius: 0; width: 100%; padding: 0;"
+                                    onclick="filtrarTabla()">
+                                    <i class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
+
+
                     <div class="col-md-5"></div>
                     <div class="col-md-3">
                         <a href="AgregarRol" class="btn btn-success" style="border-radius: 0;"><i
@@ -206,9 +209,6 @@
         </center>
 
         <br><br><br><br>
-        <!--Inicio footer-->
-        {{> footer}}
-        <!--Fin footer-->
         <script>
             function filtrarTabla() {
                 var input = document.getElementById("buscar-input");
@@ -229,6 +229,18 @@
                     }
                 }
             }
+        </script>
+        <script>
+            // Obtiene todos los botones de alternancia en la página
+            var navbarTogglers = document.querySelectorAll('[data-bs-toggle="collapse"]');
+
+            // Itera sobre cada botón de alternancia y agrega el evento de clic
+            navbarTogglers.forEach(function (navbarToggler) {
+                navbarToggler.addEventListener('click', function () {
+                    var target = document.querySelector(navbarToggler.getAttribute('data-bs-target'));
+                    target.classList.toggle('show'); // Agrega o remueve la clase 'show' para colapsar/desplegar el menú
+                });
+            });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

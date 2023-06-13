@@ -31,19 +31,20 @@
     }
   </style>
   <!--Barra de navegación-->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
     <div class="sidebar" data-color="black">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="" class="simple-text" style="color:white;">
+        <a href="dashboard" class="simple-text" style="color:white;">
           Levitisoft
         </a>
       </div>
       {{#if name}}
       <div class="logo">
-        <a href="" class="simple-text" style="color:white;">
+        <a href="dashboard" class="simple-text" style="color:white;">
           <i class="fa-solid fa-circle-user fa-2xl" style="width: 45px;"> </i>{{name}}
         </a>
       </div>
@@ -115,7 +116,7 @@
     </div>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+      <nav class="navbar navbar-expand navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -148,14 +149,14 @@
         <div class="container" style="margin-top: 80px;">
 
           <!--Start Form&Card-->
-          <div class="card" style="width: 38%; border-radius: 0;">
+          <div class="card" style="width: 85%; border-radius: 0;">
 
             <h5 class="card-title mt-3" style="margin-bottom: 2%;">Registrar rol</h5>
             <!--Start Card 1-->
             <div class="card-body">
               <form action="" method="post" id="formulario">
                 <div class="row">
-                  <div class="col-12 ">
+                  <div class="col-6 mx-auto ">
                     <div class="form-floating mb-3">
                       <input type="text" class="form-control" id="nombreRol" style="border-radius: 0;" name="nombreRol"
                         onclick="validar()">
@@ -187,7 +188,7 @@
                 <form action="" method="post">
               </div>
               <br>
-              <table class="table custom-table" >
+              <table class="table custom-table" style="width: 85%;">
                 <thead style="background-color: #282d32; color:white;">
                   <tr>
                     <th>Permisos</th>

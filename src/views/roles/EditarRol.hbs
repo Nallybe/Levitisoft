@@ -20,13 +20,14 @@
     }
   </style>
   <!--Barra de navegación-->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
     <div class="sidebar" data-color="black">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="" class="simple-text" style="color:white;">
+        <a href="/dashboard" class="simple-text" style="color:white;">
           Levitisoft
         </a>
       </div>
@@ -104,7 +105,7 @@
     </div>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+      <nav class="navbar navbar-expand navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -137,81 +138,61 @@
         <div class="container" style="margin-top: 80px;">
 
           <!--Start Form&Card-->
-          <div class="card" style="width: 95%; border-radius: 0;">
+          <div class="card" style="width: 85%; border-radius: 0;">
             <div class="card-body">
               <h4 class="card-title" style="margin-bottom: 2%;">Editar Rol</h4>
               <!--Start Card 1-->
-              <div class="card" style="width: 35%; border-radius: 0; margin-left: 20px;">
-                <div class="card-body">
-                  {{#each roles}}
-                  <form action="" method="post" id="formulario">
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="input-group mb-3">
-                          <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="floatingInput" style="border-radius: 0;"
-                              value="{{idRoles}}" disabled name="idRoles">
-                            <label for="floatingInput">Id</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="nombreRol" style="border-radius: 0;"
-                            value="{{nombreRoles}}" name="nombreRol">
-                          <div id="mensajeError"></div>
-                          <label for="floatingInput">Nombre</label>
-                        </div>
-                      </div>
+              {{#each roles}}
+              <form action="" method="post" id="formulario">
+                <div class="row pt-4">
+                  <div class="col-6 mx-auto">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="nombreRol" style="border-radius: 0;"
+                        value="{{nombreRoles}}" name="nombreRol">
+                      <div id="mensajeError"></div>
+                      <label for="floatingInput">Nombre</label>
                     </div>
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="form-floating mb-3">
-
-                          <select class="form-control" id="floatingInput" style="border-radius: 0;" value="{{estado}}"
-                            name="estadoRol">
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                          </select>
-                          <label for="floatingInput">Estado</label>
-                        </div>
-                      </div>
-                    </div>
-
-                </div>
-
-
-
-              </div>
-              <div style="margin-top: 1%; margin-left:20px;">
-                <div style="margin-top: 1%; width: 35%;">
-                  <div class="d-grid gap-2">
-                    <button class="btn btn-success" style="border-radius: 0; margin-bottom: 1px;" type="submit">
-                      Editar rol</button>
-                    <a class="btn btn-danger" href="/roles" style="border-radius: 0; margin-top: 1px;"
-                      type="button">Cancelar</a>
                   </div>
                 </div>
-                <br>
-              </div>
+                <div class="row">
+                  <div class="col-6 mx-auto">
+                    <div class="form-floating mb-3">
 
-              {{/each}}
+                      <select class="form-control" id="floatingInput" style="border-radius: 0;" value="{{estado}}"
+                        name="estadoRol">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                      </select>
+                      <label for="floatingInput">Estado</label>
+                    </div>
+                  </div>
+                </div>
+
             </div>
+
+            <div style="margin-top: 1%; margin-left:20px;">
+              <div style="margin-top: 1%; width: 35%;">
+                <div class="d-grid gap-2">
+                  <button class="btn btn-success" style="border-radius: 0; margin-bottom: 1px;" type="submit">
+                    Editar rol</button>
+                  <a class="btn btn-danger" href="/roles" style="border-radius: 0; margin-top: 1px;"
+                    type="button">Cancelar</a>
+                </div>
+              </div>
+              <br>
+            </div>
+
           </div>
 
+
+          {{/each}}
         </div>
 
-        <!--End Form&Card-->
-
-
-
-      </center>
-      <center>
         <div class="container">
           <div class="row" style="text-align:rigth;">
           </div>
           <br>
-          <table class="table" style="text-align:center;">
+          <table class="table" style="text-align:center; width:85%;">
             <thead style="background-color: #282d32; color:white;">
               <tr>
                 <th>Permiso</th>
@@ -225,8 +206,8 @@
                 <td>{{this.nombrePermisos}}</td>
 
                 <td>
-                  <div class="row">
-                    <div class="col-6" style=" margin-left:120px; padding:0px;">
+                  <div class="row align-items-center">
+                    <div class="col-6 ms-5" style="padding: 0;">
                       <div class="custom-control custom-switch">
                         <input onchange="obtener(this, {{idPermisos}})" type="checkbox" class="custom-control-input"
                           id="permiso{{this.idPermisos}}" {{#if asignado}}checked disabled{{/if}}>
@@ -234,37 +215,35 @@
                       </div>
                     </div>
                     <input type="hidden" name="idSeleccionado" id="idSeleccionado" value="">
-                    </form>
-                    <div class="col-6" style="width:15%;">
+                    <div class="col-6 " style="width: 15%; padding-left: 0;">
                       <form action="/EliminarAsignacion/{{idRoles}}" method="POST">
                         <input type="hidden" value="{{idRoles}}" name="idRoles">
                         <input type="hidden" value="{{idPermisos}}" name="idPermisos">
-                        <button class="btn btn" type="submit"><i class="fa fa-trash" style=""></i></button>
+                        <button class="btn btn" type="submit"><i class="fa fa-trash"></i></button>
                       </form>
                     </div>
                   </div>
-
-
                 </td>
+
+
 
               </tr>
               {{/each}}
             </tbody>
           </table>
+
         </div>
 
+
       </center>
-      {{> footer}}
     </div>
   </div>
 </body>
 
-<!--Inicio footer-->
-
-<!--Fin footer-->
 
 
 <script>
+
   let formulario = document.querySelector('#formulario');
   let nombreInput = document.querySelector('#nombreRol');
   let mensajeError = document.querySelector('#mensajeError');
@@ -272,28 +251,21 @@
   let nombre = "";
   let todosDesactivados = true;
 
-  nombreInput.addEventListener('blur', function () {
-    nombre = nombreInput.value.trim();
-    if (nombre === "") {
-      mostrarError('Debe ingresar un nombre');
-    } else {
-      ocultarError();
-    }
-  });
-
   formulario.addEventListener('submit', function (event) {
+    nombre = nombreInput.value.trim();
     // Validación del nombre
-    if (nombre === "") {
+    if (nombre.trim() === "") {
       event.preventDefault();
       mostrarError('Debe ingresar un nombre');
       Swal.fire(
         'El campo nombre es obligatorio',
         '',
         'error'
-      )
+      );
     } else {
       ocultarError();
     }
+
 
     // Validación de los checkboxes
     for (let i = 0; i < checkboxes.length; i++) {

@@ -34,13 +34,14 @@
             height: 15px;
         }
     </style>
-    <div class="wrapper ">
+    <div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
         <div class="sidebar" data-color="black">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
             <div class="logo">
-                <a href="" class="simple-text" style="color:white;">
+                <a href="/dashboard" class="simple-text" style="color:white;">
                     Levitisoft
                 </a>
             </div>
@@ -118,7 +119,7 @@
         </div>
         <div class="main-panel" id="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+            <nav class="navbar navbar-expand navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
                         <div class="navbar-toggle">
@@ -155,74 +156,55 @@
                         <div class="card-body">
                             <h4 class="card-title" style="margin-bottom: 2%;">Editar insumo</h4>
                             <!--Start Card 1-->
-                            <div class="card" style="width: 35%; border-radius: 0; margin-left: 20px;">
-                                <div class="card-body">
-                                    {{#each insumos}}
-                                    <form action="" method="post" id="formulario">
-                                        <div class="mb-3">
-                                            <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id=" floatingInput"
-                                                    style="border-radius: 0;" name="idInsumos" value="{{idInsumos}}"
-                                                    disabled>
-                                                <label for="floatingInput">Id</label>
-                                            </div>
+                            {{#each insumos}}
+                            <form action="" method="post" id="formulario">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id=" nombreInsumo"
+                                                style="border-radius: 0;" name="nombreInsumo" value="{{nombreInsumo}}">
+                                            <div id="mensajeErrorNombre"></div>
+                                            <label for="floatingInput">Nombre</label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id=" nombreInsumo"
-                                                        style="border-radius: 0;" name="nombreInsumo"
-                                                        value="{{nombreInsumo}}">
-                                                    <div id="mensajeErrorNombre"></div>
-                                                    <label for="floatingInput">Nombre</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="stockInsumo"
-                                                        style="border-radius: 0;" name="stockInsumo"
-                                                        value="{{stockInsumo}}" min="1">
-                                                    <div id="mensajeErrorStock"></div>
-                                                    <label for="floatingInput">Stock</label>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="number" class="form-control" id="stockInsumo"
+                                                style="border-radius: 0;" name="stockInsumo" value="{{stockInsumo}}"
+                                                min="1">
+                                            <div id="mensajeErrorStock"></div>
+                                            <label for="floatingInput">Stock</label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-floating mb-3">
-                                                    <select class="form-control" id="floatingInput"
-                                                        style="border-radius: 0;" name="medida" value="{{medida}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-control" id="floatingInput" style="border-radius: 0;"
+                                                name="medida" value="{{medida}}">
 
-                                                        <option value="Pliego">Pliego</option>
-                                                        <option value="Medio pliego">Medio pliego</option>
-                                                        <option value="Octavo">Octavo</option>
-                                                        <option value="Unidad">Unidad</option>
-                                                    </select>
-                                                    <label for="floatingInput">Medida</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="form-floating mb-3">
-
-                                                    <select class="form-control" id="floatingInput"
-                                                        style="border-radius: 0;" name="estado" value="{{estado}}">
-
-                                                        <option value="Disponible">Disponible</option>
-                                                        <option value="No disponible">No disponible</option>
-                                                    </select>
-                                                    <label for="floatingInput">Estado</label>
-                                                </div>
-                                            </div>
+                                                <option value="Pliego">Pliego</option>
+                                                <option value="Medio pliego">Medio pliego</option>
+                                                <option value="Octavo">Octavo</option>
+                                                <option value="Unidad">Unidad</option>
+                                            </select>
+                                            <label for="floatingInput">Medida</label>
                                         </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-floating mb-3">
 
+                                            <select class="form-control" id="floatingInput" style="border-radius: 0;"
+                                                name="estado" value="{{estado}}">
+
+                                                <option value="Disponible">Disponible</option>
+                                                <option value="No disponible">No disponible</option>
+                                            </select>
+                                            <label for="floatingInput">Estado</label>
+                                        </div>
+                                    </div>
                                 </div>
 
-
-
-
-
-
-                            </div>
                         </div>
 
                         <div style="margin-top: 1%; margin-left:20px;">
@@ -237,14 +219,18 @@
                                     style="border-radius: 0; margin-top: 1px; width:100%;" type="button">Cancelar</a>
                             </div>
                         </div>
-                        </form>
-                        {{/each}}
                         <br>
                     </div>
                 </div>
 
-                {{> footer}}
+
+                </form>
+                {{/each}}
+                <br>
         </div>
+    </div>
+
+    </div>
 
     </div>
 

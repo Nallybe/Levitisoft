@@ -1,73 +1,72 @@
-
-<div class="wrapper ">
-  <div class="sidebar" data-color="dark">
+<div class="wrapper" style="background-color: #E3E3E3; background-color: #ebecf1;">
+  <div class="sidebar">
     {{#if name}}
     <div class="logo">
       <a href="" class="simple-text" style="color:white;">
-        <i class="fa-solid fa-circle-user fa-2xl" style="width: 45px;"> </i>{{name}}
+        <i class="fa-solid fa-circle-user fa-2xl" style="width: 45px;"></i>{{name}}
       </a>
     </div>
     {{/if}}
-    <div class="sidebar-wrapper" id="sidebar-wrapper">
+    <div class="sidebar-wrapper collapse show">
       <ul class="nav">
         <li class="active">
-          <a href="dashboard" >
+          <a href="dashboard">
             <i class="fa fa-house" style="color: black;"></i>
             <p style="color: black;">Home</p>
           </a>
         </li>
         <li>
           <a href="roles">
-            <i class="fa fa-gear" ></i>
-            <p >Roles</p>
+            <i class="fa fa-gear" style="color:white;"></i>
+            <p style="color:white;">Roles</p>
           </a>
         </li>
         <li>
           <a href="usuarios">
-            <i class="fa fa-users" ></i>
-            <p >Usuarios</p>
+            <i class="fa fa-users" style="color:white;"></i>
+            <p style="color:white;">Usuarios</p>
           </a>
         </li>
         <li>
           <a href="compras">
-            <i class="fa fa-shop" ></i>
-            <p >Compras</p>
+            <i class="fa fa-shop" style="color:white;"></i>
+            <p style="color:white;">Compras</p>
           </a>
         </li>
         <li>
           <a href="insumos">
-            <i class="fa fa-box" ></i>
-            <p >Insumos</p>
+            <i class="fa fa-box" style="color:white;"></i>
+            <p style="color:white;">Insumos</p>
           </a>
         </li>
         <li>
           <a href="produccion">
-            <i class="fa fa-scissors" ></i>
-            <p >Producción</p>
+            <i class="fa fa-scissors" style="color:white;"></i>
+            <p style="color:white;">Producción</p>
           </a>
         </li>
         <li>
           <a href="ProductosDash">
-            <i class="fa fa-boxes-packing" ></i>
-            <p >Productos</p>
+            <i class="fa fa-boxes-packing" style="color:white;"></i>
+            <p style="color:white;">Productos</p>
           </a>
         </li>
         <li>
           <a href="clientes">
-            <i class="fa fa-user" ></i>
-            <p >Clientes</p>
+            <i class="fa fa-user" style="color:white;"></i>
+            <p style="color:white;">Clientes</p>
           </a>
         </li>
         <li>
           <a href="ventas">
-            <i class="fa fa-truck-fast" ></i>
-            <p >Ventas</p>
+            <i class="fa fa-truck-fast" style="color:white;"></i>
+            <p style="color:white;">Ventas</p>
           </a>
         </li>
         <li class="limit-scroll last-item">
           <a href="reparaciones">
-            <i class="fa fa-screwdriver-wrench" ></i>
-            <p >Reparaciones</p>
+            <i class="fa fa-screwdriver-wrench" style="color:white;"></i>
+            <p style="color:white;">Reparaciones</p>
           </a>
         </li>
       </ul>
@@ -75,12 +74,11 @@
   </div>
 
   <div class="main-panel" id="main-panel">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand navbar-absolute" >
+    <nav class="navbar navbar-expand navbar-absolute">
       <div class="container-fluid">
         <div class="navbar-wrapper">
           <div class="navbar-toggle">
-            <button type="button" class="navbar-toggler">
+            <button id="navbar-toggle" type="button" class="navbar-toggler">
               <span class="navbar-toggler-bar bar1"></span>
               <span class="navbar-toggler-bar bar2"></span>
               <span class="navbar-toggler-bar bar3"></span>
@@ -103,5 +101,31 @@
           </a>
         </div>
       </div>
-      
     </nav>
+
+<script>
+    $(document).ready(function() {
+        $('#navbar-toggle').click(function() {
+            $('.sidebar-wrapper').toggleClass('collapsed');
+        });
+    });
+</script>
+    <style>
+      #sidebar-wrapper {
+        display: block;
+      }
+
+      #sidebar-wrapper.collapsed {
+        display: none;
+      }
+
+      @media only screen and (max-width: 600px) {
+        #sidebar-wrapper {
+          display: none;
+        }
+
+        #sidebar-wrapper.collapsed {
+          display: block;
+        }
+      }
+    </style>

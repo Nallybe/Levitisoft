@@ -14,13 +14,14 @@
 
 <body>
   <!--Barra de navegación-->
-  <div class="wrapper ">
+  <div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
     <div class="sidebar" data-color="black">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="" class="simple-text" style="color:white;">
+        <a href="dashboard" class="simple-text" style="color:white;">
           Levitisoft
         </a>
       </div>
@@ -98,7 +99,7 @@
     </div>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+      <nav class="navbar navbar-expand navbar-absolute">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
@@ -127,23 +128,23 @@
         </div>
       </nav>
       <!--Barra de navegación-->
-      <br><br><br><br>
+      <br><br><br>
       <center>
         <div class="container">
           <div class="row">
             <div class="col-md-4">
-
               <div class="row" style="margin-left: 8px;">
-                <div class="col-md-8">
+                <div class="col-md-8 col-9">
                   <input id="buscar-input"
-                    style="height: 45px; border-radius: 0; margin-top: 4px; width: 105%; margin-right: 0;"
-                    class="form-control me-2" type="search" placeholder="Buscar Venta" aria-label="Search"
+                    style="height: 100%; border-radius: 0; margin-top: 4px; width: 100%; margin-right: 0;"
+                    class="form-control me-2" type="search" placeholder="Buscar venta" aria-label="Search"
                     oninput="filtrarTabla()">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-3 pt-2">
                   <button class="btn btn-outline-success" type="submit"
-                    style="height: 60%; border-radius: 0; width: 100%; padding: 10%;" onclick="filtrarTabla()"><i
-                      class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i></button>
+                    style="height: 100%; border-radius: 0; width: 100%; padding: 0;" onclick="filtrarTabla()">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass" style="width: 100%;"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -185,9 +186,6 @@
       </center>
       <br><br><br><br><br><br><br><br><br>
 </body>
-<!--Inicio footer-->
-{{> footer}}
-<!--Fin footer-->
 <script>
   function filtrarTabla() {
     var input = document.getElementById("buscar-input");

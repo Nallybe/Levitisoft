@@ -3,8 +3,8 @@
 
 {{>headerD}}
 
-<body >
-  <!--Navbar--> 
+<body>
+  <!--Navbar-->
   {{> bar}}
   <!-- End Navbar -->
   <!-- End Navbar -->
@@ -12,25 +12,11 @@
   <br><br><br><br>
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-          <div class="card " style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Usuarios registrados</h5>
-              <div class="row">
-                <div class="col-md-5">
-                  <img src="assets/img/users.png" alt="" style="width: 79%;">
-                </div>
-                <div class="col-7">
-                  <h4>700000</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class=" row container-fluid col-md-12 ">
-
+      <div class="col-6">
+        <div class="row container-fluid col-md-12">
           <div class="card card-success">
             <div class="card-header">
-              <h3 class="card-title">Informe Ventas</h3>
+              <h5 class="card-title">Informe compras vs ventas</h5>
             </div>
             <div class="card-body">
               <div class="chart">
@@ -42,31 +28,33 @@
               <div class="col-sm-12">
                 <div class="d-grid gap-2 d-md-block" style="margin-left: 10px;">
                   <input type="date" id="start" name="trip-start">
-                  <button class="btn btn-primary" type="button">Descargar</button>
+                  <button class="btn btn-primary" type="button" onclick="downloadReport()">Descargar</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
-      <div class="col-6">
-        <div class=" row container-fluid col-md-12 ">
-
-          <div class="card card-success">
-            <div class="card-header">
-              <h3 class="card-title">Informe Productos</h3>
-            </div>
-            <div class="card-body">
-              <div class="chart">
-                <canvas id="barChart"
-                  style="min-height: 330px; height: 330px; max-height: 550px; max-width: 100%;"></canvas>
+      </div>
+        
+      
+        <div class="col-6">
+          <div class="row container-fluid col-md-12">
+            <div class="card card-success">
+              <div class="card-header">
+                <h5 class="card-title">Informe Productos</h5>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div class="col-sm-12">
-                <div class="d-grid gap-2 d-md-block" style="margin-left: 10px;">
-                  <input type="date" id="start" name="trip-start">
-                  <button class="btn btn-primary" type="button">Descargar</button>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="pieChart"
+                    style="min-height: 330px; height: 330px; max-height: 550px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-sm-12">
+                  <div class="d-grid gap-2 d-md-block" style="margin-left: 10px;">
+                    <input type="date" id="start" name="trip-start">
+                    <button class="btn btn-primary" type="button">Descargar</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -74,22 +62,22 @@
         </div>
       </div>
     </div>
-  </div>
 
     <!--Fin cuerpo-->
 
 
 </body>
 <!--   Core JS Files   -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="./plugins/chart.js/Chart.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="./dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="./dist/js/demo.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="./plugins/chart.js/Chart.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="./dist/js/demo.js"></script>
 <script src="assets/js/core/jquery.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap.min.js"></script>
@@ -111,244 +99,104 @@
 
   });
 </script>
+
 <script>
-    $(function () {
-      /* ChartJS
-       * -------
-       * Here we will create a few charts using ChartJS
-       */
+  //ESTADISTICA DE PRODUCTOS
+  // Obtén una referencia al elemento canvas
+  const pieChart = document.getElementById('pieChart').getContext('2d');
 
-      //--------------
-      //- AREA CHART -
-      //--------------
+  // Datos del gráfico de torta
+  const data = {
+    labels: ['Bolsos', 'Zapatos', 'Correas', 'Accesorios', 'Chaquetas'], // Etiquetas de las secciones
+    datasets: [{
+      data: [10, 20, 50, 25, 35], // Valores de las secciones
+      backgroundColor: ['#ff6384', '#36a2eb', '#F52E2E', '#EEEE2F', '#EE7B01'] // Colores de las secciones
+    }]
+  };
 
-      // Get context with jQuery - using jQuery's .get() method.
+  // Opciones del gráfico de torta
+  const options = {
+    responsive: true
+  };
 
-
-      var areaChartData = {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
-        datasets: [
-          {
-            label: 'Ventas Online',
-            backgroundColor: '#3C95FF',
-            borderColor: '#3C95FF',
-            pointRadius: false,
-            pointColor: '#black',
-            pointStrokeColor: 'black',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'black',
-            data: [28, 48, 40, 19, 86, 27, 90]
-          },
-          {
-            label: 'Ventas Fisicas',
-            backgroundColor: '#FF3C3C',
-            borderColor: '#FF3C3C',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [65, 59, 80, 81, 56, 55, 40]
-          },
-        ]
-      }
+  // Crea el gráfico de torta
+  const chart = new Chart(pieChart, {
+    type: 'pie',
+    data: data,
+    options: options
+  });
+</script>
 
 
+<script>
+  $(function () {
+    var areaChartData = {
+      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+      datasets: [
+        {
+          label: 'Ventas',
+          backgroundColor: '#3C95FF',
+          borderColor: '#3C95FF',
+          pointRadius: false,
+          pointColor: '#black',
+          pointStrokeColor: 'black',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'black',
+          data: [28, 48, 40, 19, 86, 27, 90]
+        },
+        {
+          label: 'Compras',
+          backgroundColor: '#FF3C3C',
+          borderColor: '#FF3C3C',
+          pointRadius: false,
+          pointColor: 'rgba(210, 214, 222, 1)',
+          pointStrokeColor: '#c1c7d1',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+      ]
+    }
 
-      //-------------
-      //- BAR CHART -
-      //-------------
-      var barChartCanvas = $('#barChart1').get(0).getContext('2d')
-      var barChartData = $.extend(true, {}, areaChartData)
-      var temp0 = areaChartData.datasets[0]
-      var temp1 = areaChartData.datasets[1]
-      barChartData.datasets[0] = temp1
-      barChartData.datasets[1] = temp0
+    var barChartCanvas = $('#barChart1').get(0).getContext('2d');
+    var barChartData = $.extend(true, {}, areaChartData);
+    var temp0 = areaChartData.datasets[0];
+    var temp1 = areaChartData.datasets[1];
+    barChartData.datasets[0] = temp1;
+    barChartData.datasets[1] = temp0;
 
-      var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false
-      }
+    var barChartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      datasetFill: false
+    }
 
-      new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-      })
-      var barChartCanvas = $('#barChart2').get(0).getContext('2d')
-      var barChartData = $.extend(true, {}, areaChartData)
-      var temp0 = areaChartData.datasets[0]
-      var temp1 = areaChartData.datasets[1]
-      barChartData.datasets[0] = temp1
-      barChartData.datasets[1] = temp0
+    new Chart(barChartCanvas, {
+      type: 'bar',
+      data: barChartData,
+      options: barChartOptions
+    });
 
-      var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false
-      }
+    function downloadReport() {
+      var canvas = document.getElementById('barChart1');
+      var dataURL = canvas.toDataURL('image/png');
+      var date = document.getElementById('start').value;
+      var fileName = 'informe_compras_ventas_' + date + '.png';
 
-      new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-      })
-
-      //---------------------
-      //- STACKED BAR CHART -
-      //---------------------
-      var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-      var stackedBarChartData = $.extend(true, {}, barChartData)
-
-      var stackedBarChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          xAxes: [{
-            stacked: true,
-          }],
-          yAxes: [{
-            stacked: true
-          }]
-        }
-      }
-
-      new Chart(stackedBarChartCanvas, {
-        type: 'bar',
-        data: stackedBarChartData,
-        options: stackedBarChartOptions
-      })
-    })
-  </script>
-  <script>
+      var link = document.createElement('a');
+      link.href = dataURL;
+      link.download = fileName;
+      link.click();
+    }
+  });
+</script>
+<script>
   $(document).ready(function () {
     // Javascript method's body can be found in assets/js/demos.js
     demo.initDashboardPageCharts();
 
   });
 </script>
-<script>
-    $(function () {
-      /* ChartJS
-       * -------
-       * Here we will create a few charts using ChartJS
-       */
-
-      //--------------
-      //- AREA CHART -
-      //--------------
-
-      // Get context with jQuery - using jQuery's .get() method.
-
-
-      var areaChartData = {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
-        datasets: [
-          {
-            label: 'Correa',
-            backgroundColor: '#A75800',
-            borderColor: '#A75800',
-            pointRadius: false,
-            pointColor: '#black',
-            pointStrokeColor: 'black',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'black',
-            data: [28, 48, 40, 19, 86, 27, 90]
-          },
-          {
-            label: 'Sombrero',
-            backgroundColor: '#FF3C3C',
-            borderColor: '#FF3C3C',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [65, 59, 80, 81, 56, 55, 40]
-          },
-          {
-            label: 'Morral',
-            backgroundColor: '#3C95FF',
-            borderColor: '#3C95FF',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [40, 29, 75, 42, 89, 53, 90]
-          },
-        ]
-      }
-
-
-
-      //-------------
-      //- BAR CHART -
-      //-------------
-      var barChartCanvas = $('#barChart').get(0).getContext('2d')
-      var barChartData = $.extend(true, {}, areaChartData)
-      var temp0 = areaChartData.datasets[0]
-      var temp1 = areaChartData.datasets[1]
-      barChartData.datasets[0] = temp1
-      barChartData.datasets[1] = temp0
-
-      var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false
-      }
-
-      new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-      })
-      var barChartCanvas = $('#barChart2').get(0).getContext('2d')
-      var barChartData = $.extend(true, {}, areaChartData)
-      var temp0 = areaChartData.datasets[0]
-      var temp1 = areaChartData.datasets[1]
-      barChartData.datasets[0] = temp1
-      barChartData.datasets[1] = temp0
-
-      var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false
-      }
-
-      new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-      })
-
-      //---------------------
-      //- STACKED BAR CHART -
-      //---------------------
-      var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-      var stackedBarChartData = $.extend(true, {}, barChartData)
-
-      var stackedBarChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          xAxes: [{
-            stacked: true,
-          }],
-          yAxes: [{
-            stacked: true
-          }]
-        }
-      }
-
-      new Chart(stackedBarChartCanvas, {
-        type: 'bar',
-        data: stackedBarChartData,
-        options: stackedBarChartOptions
-      })
-    })
-  </script>
-  <script src="https://kit.fontawesome.com/f669cfd668.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f669cfd668.js" crossorigin="anonymous"></script>
 
 </html>

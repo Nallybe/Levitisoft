@@ -26,13 +26,14 @@
         }
     </style>
     <!--Barra de navegación-->
-    <div class="wrapper ">
+    <div class="wrapper " style="background-color: #E3E3E3;
+  background-color: #ebecf1;">
         <div class="sidebar" data-color="black">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
             <div class="logo">
-                <a href="" class="simple-text" style="color:white;">
+                <a href="dashboard" class="simple-text" style="color:white;">
                     Levitisoft
                 </a>
             </div>
@@ -110,7 +111,7 @@
         </div>
         <div class="main-panel" id="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand navbar-absolute" style="background-color: rgb(124, 123, 123);">
+            <nav class="navbar navbar-expand navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
                         <div class="navbar-toggle">
@@ -152,18 +153,19 @@
                 <br><br>
                 <div class="container">
                     {{#each productos}}
-                    <div class="row">
+                    <div class="row productos">
                         <div class="col-md-6" style="width: 75%;">
-                            <div class="card">
-                                <h4>{{nombre}}</h4>
+                            <div class="card" style="width: 78%;">
+                                <h6>{{nombre}}</h6>
                                 <img src="" alt="">
                                 <p>Descripción: {{descripcion}}</p>
                                 <p>Precio: {{precioUnd}}</p>
                                 <p>Cantidades disponibles: {{cantidadDis}}</p>
-                                <div class="button-container">
-                                    <button class="btn btn-success"
-                                        onclick="agregarTarjeta('{{idProductos}}', '{{nombre}}', {{precioUnd}})">+</button>
+                                <div class="button-container mb-1 mt-1">
+                                    <button class="btn btn-success" 
+                                        onclick="agregarTarjeta('{{idProductos}}', '{{nombre}}', {{precioUnd}})"><i style="margin-left: ;" class="fa fa-plus fa-xs"></i></button>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -288,8 +290,6 @@
             <br>
 </body>
 
-<!--Inicio footer-->
-<!--Fin footer-->
 
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

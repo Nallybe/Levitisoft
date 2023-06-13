@@ -13,8 +13,7 @@ router.get('/logout', loginController.logout);
 router.get('/registro/:idAccess', loginController.registro);
 router.post('/registro/:idAccess', loginController.registroinfo);
 
-
-
+router.get('/olvidar_contrase', loginController.olvido);
 
 
 module.exports = router;
