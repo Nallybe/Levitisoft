@@ -26,11 +26,11 @@
         <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-        <div class="logo">
+        {{!-- <div class="logo">
             <a href="dashboard" class="simple-text" style="color:white;">
                 Levitisoft
             </a>
-        </div>
+        </div> --}}
         {{#if name}}
         <div class="logo">
             <a href="" class="simple-text" style="color:white;">
@@ -43,7 +43,7 @@
                 <li>
                     <a href="dashboard">
                         <i class="fa fa-house" style="color:white;"></i>
-                        <p style="color:white;">Home</p>
+                        <p style="color:white;">Dashboard</p>
                     </a>
                 </li>
                 <li>
@@ -94,6 +94,7 @@
                         <p style="color:white;">Ventas</p>
                     </a>
                 </li>
+                <input hidden class="Permisos" id="permisosInput" type="text" value="{{asignacion}}">
                 <li>
                     <a href="reparaciones">
                         <i class="fa fa-screwdriver-wrench" style="color:white;"></i>
@@ -105,7 +106,7 @@
     </div>
     <div class="main-panel" id="main-panel">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand navbar-absolute" >
+        <nav class="navbar navbar-expand navbar-absolute">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
                     <div class="navbar-toggle">
@@ -145,8 +146,8 @@
                             <div class="col-md-8 col-9">
                                 <input id="buscar-input"
                                     style="height: 100%; border-radius: 0; margin-top: 4px; width: 100%; margin-right: 0;"
-                                    class="form-control me-2" type="search" placeholder="Buscar Insumo" aria-label="Search"
-                                    oninput="filtrarTabla()">
+                                    class="form-control me-2" type="search" placeholder="Buscar Insumo"
+                                    aria-label="Search" oninput="filtrarTabla()">
                             </div>
                             <div class="col-md-2 col-3 pt-2">
                                 <button class="btn btn-outline-success" type="submit"
@@ -201,35 +202,17 @@
                         {{/each}}
 
                         <script>
-                            function mostrarAlerta(stockCell) {
-                                var stock = parseInt(stockCell.textContent);
-                                var nombreInsumo = stockCell.parentNode.querySelector('.p-3.text-center:nth-child(2)').textContent;
+                            // Obtener todas las celdas que contienen el stockInsumo
+                            var stockCells = document.querySelectorAll('.p-3.text-center');
 
+                            // Iterar sobre cada celda y verificar si el stock es igual a 5
+                            stockCells.forEach(function (cell) {
+                                var stock = parseInt(cell.textContent);
                                 if (stock <= 5) {
-                                    Swal.fire({
-                                        title: 'Stock de Insumo',
-                                        text: 'El stock del insumo "' + nombreInsumo + '" es igual a 5.',
-                                        icon: 'warning',
-                                        confirmButtonText: 'OK'
-                                    });
+                                    var nombreInsumo = cell.parentNode.querySelector('.p-3.text-center:nth-child(2)').textContent;
+                                    alert('El stock del insumo "' + nombreInsumo + '" es igual o menor a 5.');
                                 }
-
-                                // Obtener la siguiente celda de stockInsumo
-                                var siguienteStockCell = stockCell.parentNode.nextElementSibling.querySelector('.p-3.text-center:nth-child(4)');
-
-                                // Verificar si hay más celdas y llamar a la función nuevamente
-                                if (siguienteStockCell) {
-                                    mostrarAlerta(siguienteStockCell);
-                                }
-                            }
-
-                            // Obtener la primera celda de stockInsumo
-                            var primeraStockCell = document.querySelector('.p-3.text-center:nth-child(4)');
-
-                            // Verificar si existe y llamar a la función mostrarAlerta
-                            if (primeraStockCell) {
-                                mostrarAlerta(primeraStockCell);
-                            }
+                            });
                         </script>
                     </tbody>
                 </table>
@@ -239,12 +222,29 @@
 </div>
 </center>
 
-<!--Inicio footer-->
-<!--Inicio footer-->
 
-<!--Fin footer-->
-<!--Fin footer-->
 </body>
+{{#if asignacion}}
+    <script>
+      var permisosInput = document.querySelector('#permisosInput');
+      var permisosValue = permisosInput.value;
+
+      var palabras = permisosValue.split(',');
+
+      var menuItems = document.querySelectorAll('.nav li');
+
+      menuItems.forEach(function (item) {
+        var items = item.querySelector('p').textContent.trim().toLowerCase();
+
+        if (palabras.includes(items)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    </script>
+    {{/if}}
+
 <script>
     function alerta() {
         Swal.fire({

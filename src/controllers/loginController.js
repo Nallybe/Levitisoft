@@ -1,10 +1,14 @@
+
+const nodemailer = require('nodemailer')
+const jwt = require("jsonwebtoken")
+const salt = 10
 const bcrypt = require('bcrypt');
 
 function login(req, res) {
   if (req.session.loggedin != true) {
     res.redirect('login');
   } else {
-    res.redirect('dashboard');
+    res.redirect('homeDash');
   }
 }
 
@@ -50,11 +54,45 @@ function auth(req, res) {
 
                   if (infoResults.length > 0) {
                     req.session.name = infoResults[0].nombre;
-                    res.redirect('/dashboard');
+
+                    // Obtener los roles correspondientes al correo electrónico en users_access
+                    conn.query(
+                      'SELECT r.nombreRoles FROM tbl_roles AS r JOIN users_access AS ua ON r.idRoles = ua.idRoles WHERE ua.correo = ?',
+                      [data.correol],
+                      (error, roleResults) => {
+                        if (error) {
+                          console.log(error);
+                          return res.status(500).json({ error: 'Error en la consulta a la base de datos' });
+                        }
+                        req.session.roles = roleResults;
+                        console.log(req.session.roles)
+                        //res.redirect('/dashboard');
+                        conn.query(
+                          'SELECT r.nombreRoles, p.nombrePermisos ' +
+                          'FROM tbl_roles AS r ' +
+                          'JOIN tbl_asignacion AS a ON r.idRoles = a.idRoles ' +
+                          'JOIN tbl_permisos AS p ON a.idPermisos = p.idPermisos ' +
+                          'JOIN users_access AS ua ON r.idRoles = ua.idRoles ' +
+                          'WHERE ua.correo = ?',
+                          [data.correol],
+                          (error, permissionResults) => {
+                            if (error) {
+                              console.log(error);
+                              return res.status(500).json({ error: 'Error en la consulta a la base de datos' });
+                            }
+
+                            const permisos = permissionResults.map((row) => row.nombrePermisos);
+
+                            req.session.asignacion = permisos;
+                            //console.log(req.session.asignacion)
+                            // Redireccionar a la página deseada
+                            res.redirect('/homeDash');
+                          }
+                        );
+
+                      }
+                    );
                   }
-
-
-
                 }
               );
             } else {
@@ -70,6 +108,7 @@ function auth(req, res) {
     );
   });
 }
+
 
 
 
@@ -99,7 +138,7 @@ function crear(req, res) {
     });
 
   } else {
-    res.redirect('dashboard');
+    res.redirect('homeDash');
   }
 
 }
@@ -204,7 +243,7 @@ function registroinfo(req, res) {
           //console.log(req.session.name)
           const nameQueryParam = encodeURIComponent(req.session.name);
           //console.log(nameQueryParam)
-          res.redirect("/dashboard?name=" + nameQueryParam);
+          res.redirect("/homeDash?name=" + nameQueryParam);
 
         }
 
@@ -220,8 +259,87 @@ function logout(req, res) {
   res.redirect('/home');
 }
 
-function olvido(req,res){
+function olvido(req, res) {
   res.render('olvidar_contrase')
+}
+
+function recuperar(req, res) {
+  const correo = req.body.correo;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM users_access WHERE correo = ?', [correo], async (err, results) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send('Error en el servidor');
+      }
+
+      if (results.length > 0) {
+        const userId = results[0].idAccess;
+        const token = jwt.sign({ userId: userId }, 'secretKey', { expiresIn: '10m' });
+
+        const transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 465,
+          secure: true,
+          auth: {
+            user: 'levitisoft2021@gmail.com',
+            pass: 'omqseuasqhquwqbp'
+          },
+        });
+
+        const resetPasswordLink = `http://localhost:8181/restaurar_contrase?token=${token}`;
+
+        let info = await transporter.sendMail({
+          from: '"Restauracion de contraseña" <levitisoft2021@gmail.com>', // sender address
+          to: correo, // list of receivers
+          subject: "Hola ✔", // Subject line
+          text: "Hello world?", // plain text body
+          html: `<p>Hola, solicitaste un cambio de contraseña.</p><p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p><a href="${resetPasswordLink}">${resetPasswordLink}</a>`, // html body
+        });
+        return res.status(200).json({ existe: true });
+      } else {
+        return res.status(200).json({ existe: false });
+      }
+
+    });
+  })
+}
+function restablecer(req, res) {
+  res.render('restaurar_contrase')
+}
+
+function restablecerContraseña(req, res) {
+  const token = req.query.token;
+  if (!token) {
+    return res.status(400).json({ error: 'Token no proporcionado' });
+  }
+
+  try {
+    // Verificar y decodificar el token
+    const decodedToken = jwt.verify(token, 'secretKey');
+    const { userId } = decodedToken;
+    bcrypt.hash(req.body.passsword.toString(), salt, (err, hash) => {
+      if (err) return res.json({ Error: "Error for hassing password" });
+      req.getConnection((err, conn) => {
+        conn.query("UPDATE users_access SET passsword = ? WHERE idAccess = ?", [hash, userId], (err, result) => {
+          if (err) {
+            return res.status(500).json({ error: "Error al actualizar la contraseña en la base de datos" });
+          }
+          if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "El usuario no existe" });
+          }
+          return res.status(200).json({ Status: "Success" });
+
+        })
+      })
+    })
+  } catch (error) {
+    return res.status(401).json({ error: error });
+  }
+
+}
+
+function dashboard(req, res){
+  res.render("dashboard")
 }
 
 module.exports = {
@@ -231,6 +349,10 @@ module.exports = {
   auth,
   registro,
   registroinfo,
-  logout, 
-  olvido
+  logout,
+  olvido,
+  recuperar,
+  restablecer,
+  restablecerContraseña,
+  dashboard
 };

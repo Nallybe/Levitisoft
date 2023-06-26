@@ -28,15 +28,15 @@
     <!--Barra de navegación-->
     <div class="wrapper " style="background-color: #E3E3E3;
   background-color: #ebecf1;">
-        <div class="sidebar" data-color="black">
+        <div class="sidebar" >
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-            <div class="logo">
+           {{!--  <div class="logo">
                 <a href="dashboard" class="simple-text" style="color:white;">
                     Levitisoft
                 </a>
-            </div>
+            </div> --}}
             {{#if name}}
             <div class="logo">
                 <a href="" class="simple-text" style="color:white;">
@@ -49,7 +49,7 @@
                     <li>
                         <a href="dashboard">
                             <i class="fa fa-house" style="color:white;"></i>
-                            <p style="color:white;">Home</p>
+                            <p style="color:white;">Dashboard</p>
                         </a>
                     </li>
                     <li>
@@ -100,6 +100,8 @@
                             <p style="color:black;">Ventas</p>
                         </a>
                     </li>
+                    <input hidden class="Permisos" id="permisosInput" type="text" value="{{asignacion}}">
+
                     <li>
                         <a href="reparaciones">
                             <i class="fa fa-screwdriver-wrench" style="color:white;"></i>
@@ -290,6 +292,26 @@
             <br>
 </body>
 
+{{#if asignacion}}
+    <script>
+      var permisosInput = document.querySelector('#permisosInput');
+      var permisosValue = permisosInput.value;
+
+      var palabras = permisosValue.split(',');
+
+      var menuItems = document.querySelectorAll('.nav li');
+
+      menuItems.forEach(function (item) {
+        var items = item.querySelector('p').textContent.trim().toLowerCase();
+
+        if (palabras.includes(items)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    </script>
+    {{/if}}
 
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

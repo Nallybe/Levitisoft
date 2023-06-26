@@ -5,14 +5,26 @@ const router = express.Router();
 
 // Middleware de verificación de sesión
 const checkSession = (req, res, next) => {
-    if (req.session.loggedin) {
+    if (req.session.loggedin && tienePermisos(req.session)) {
         // Si hay una sesión activa, continuar con la siguiente ruta
         res.locals.name = req.session.name;
+        res.locals.asignacion = req.session.asignacion;
         next();
     } else {
         // Si no hay una sesión activa, redireccionar al login
         res.redirect('/login');
     }
+};
+
+// Función para verificar los permisos
+const tienePermisos = (session) => {
+    const asignacion = session.asignacion;
+
+    if (asignacion && asignacion.includes('ventas')) {
+        return true;
+    }
+
+    return false;
 };
 
 router.get('/ventas', checkSession, ventasController.listar);

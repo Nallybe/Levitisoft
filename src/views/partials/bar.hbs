@@ -7,70 +7,87 @@
       </a>
     </div>
     {{/if}}
+
     <div class="sidebar-wrapper collapse show">
       <ul class="nav">
+
         <li class="active">
           <a href="dashboard">
             <i class="fa fa-house" style="color: black;"></i>
-            <p style="color: black;">Home</p>
+            <p style="color: black;">Dashboard</p>
           </a>
         </li>
+
+
         <li>
           <a href="roles">
             <i class="fa fa-gear" style="color:white;"></i>
             <p style="color:white;">Roles</p>
           </a>
         </li>
+
         <li>
           <a href="usuarios">
             <i class="fa fa-users" style="color:white;"></i>
             <p style="color:white;">Usuarios</p>
           </a>
         </li>
+
         <li>
           <a href="compras">
             <i class="fa fa-shop" style="color:white;"></i>
             <p style="color:white;">Compras</p>
           </a>
         </li>
+
         <li>
           <a href="insumos">
             <i class="fa fa-box" style="color:white;"></i>
             <p style="color:white;">Insumos</p>
           </a>
         </li>
+
         <li>
           <a href="produccion">
             <i class="fa fa-scissors" style="color:white;"></i>
             <p style="color:white;">Producción</p>
           </a>
         </li>
+
         <li>
           <a href="ProductosDash">
             <i class="fa fa-boxes-packing" style="color:white;"></i>
             <p style="color:white;">Productos</p>
           </a>
         </li>
+
         <li>
           <a href="clientes">
             <i class="fa fa-user" style="color:white;"></i>
             <p style="color:white;">Clientes</p>
           </a>
         </li>
+
         <li>
           <a href="ventas">
             <i class="fa fa-truck-fast" style="color:white;"></i>
             <p style="color:white;">Ventas</p>
           </a>
         </li>
+
+
         <li class="limit-scroll last-item">
           <a href="reparaciones">
             <i class="fa fa-screwdriver-wrench" style="color:white;"></i>
             <p style="color:white;">Reparaciones</p>
           </a>
         </li>
+
+        <input hidden class="Permisos" id="permisosInput" type="text" value="{{asignacion}}">
+
       </ul>
     </div>
+
   </div>
 
   <div class="main-panel" id="main-panel">
@@ -103,13 +120,7 @@
       </div>
     </nav>
 
-<script>
-    $(document).ready(function() {
-        $('#navbar-toggle').click(function() {
-            $('.sidebar-wrapper').toggleClass('collapsed');
-        });
-    });
-</script>
+
     <style>
       #sidebar-wrapper {
         display: block;
@@ -129,3 +140,28 @@
         }
       }
     </style>
+   {{#if asignacion}}
+    <script>
+      var permisosInput = document.querySelector('#permisosInput');
+      var permisosValue = permisosInput.value;
+
+      var palabras = permisosValue.split(',');
+
+      var menuItems = document.querySelectorAll('.nav li');
+
+      menuItems.forEach(function (item) {
+        var items = item.querySelector('p').textContent.trim().toLowerCase();
+
+        if (palabras.includes(items)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+
+
+    </script>
+
+
+    {{/if}} --}}

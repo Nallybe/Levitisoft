@@ -30,25 +30,35 @@
         /* Aquí va el código CSS */
     </style>
 </head>
+
 <body>
     <br>
     <div class="login-wrap">
         <div class="login-html">
-            <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Olvidaste
-                tu contraseña?</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Restaura tu
+                contraseña</label>
 
             <div class="login-form mt-4">
                 <div class="sign-up-htm">
                     <form action="" method="post">
                         <div class="group">
-                            <label for="correo" class="label">Correo</label>
-                            <input id="correo" type="email" class="input" name="correo" required>
+                            <label for="pass" class="label">Contraseña</label>
+                            <div class="password-input">
+                                <input id="pass" type="password" name="passsword" class="input" data-type="password" required>
+                                <span class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
                         </div>
-                        {{#if error}}
-                        <div class="alert alert-danger" role="alert">
-                            {{error}}
+                        <div class="group">
+                            <label for="pass" class="label">Repetir contraseña</label>
+                            <div class="password-input">
+                                <input id="pass" type="password" class="input" data-type="password" required>
+                                <span class="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
                         </div>
-                        {{/if}}
                         <div class="group">
                             <input type="submit" class="button" value="Enviar">
                         </div>
@@ -62,17 +72,34 @@
             </div>
         </div>
     </div>
-</body>
+    <script>
+        $(document).ready(function () {
+            $('.toggle-password').click(function () {
+                var passwordField = $(this).prev('input');
+                var fieldType = passwordField.attr('type');
 
-<!--   Core JS Files   -->
-<script src="/assets/js/core/jquery.min.js"></script>
-<script src="/assets/js/core/popper.min.js"></script>
-<script src="/assets/js/core/bootstrap.min.js"></script>
-<script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<script src="/assets/js/plugins/chartjs.min.js"></script>
-<script src="/assets/js/plugins/bootstrap-notify.js"></script>
-<script src="/assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
-<script src="/assets/demo/demo.js"></script>
+                if (fieldType === 'password') {
+                    passwordField.attr('type', 'text');
+                    $(this).find('i').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+                } else {
+                    passwordField.attr('type', 'password');
+                    $(this).find('i').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+                }
+            });
+        });
+    </script>
+
+
+    <!--   Core JS Files   -->
+    <script src="/assets/js/core/jquery.min.js"></script>
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script src="/assets/js/plugins/chartjs.min.js"></script>
+    <script src="/assets/js/plugins/bootstrap-notify.js"></script>
+    <script src="/assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
+    <script src="/assets/demo/demo.js"></script>
+</body>
 
 </html>

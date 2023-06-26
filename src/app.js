@@ -47,6 +47,8 @@ app.use(session({
     saveUninitialized: true
 }))
 
+
+
 app.use('/', clientesRoutes);
 app.use('/', comprasRoutes);
 app.use('/', insumosRoutes);
@@ -63,8 +65,33 @@ app.get('/', (req, res) => {
     })
 })
 
+// Middleware de verificación de sesión
+const checkSession = (req, res, next) => {
+    if (req.session.loggedin && tienePermisos(req.session)) {
+        // Si hay una sesión activa, continuar con la siguiente ruta
+        res.locals.name = req.session.name;
+        res.locals.asignacion = req.session.asignacion;
+        next();
+    } else {
+        // Si no hay una sesión activa, redireccionar al login
+        res.redirect('/login');
+    }
+};
 
+// Función para verificar los permisos
+const tienePermisos = (session) => {
+    const asignacion = session.asignacion;
 
+    if (asignacion && asignacion.includes('dashboard')) {
+        return true;
+    }
+
+    return false;
+};
+
+app.get('/dashboard', checkSession, (req, res) => {
+    res.render('dashboard');
+});
 
 app.get('/home', (req, res) => {
     res.render('home', {
@@ -149,13 +176,17 @@ app.get('/contactanos', (req, res) => {
     })
 })
 
-app.get('/dashboard', (req, res) => {
+app.get('/homeDash', (req, res) => {
     if (req.session.loggedin) {
-      res.render('dashboard', { name: req.session.name });
+        
+      res.render('homeDash', { name: req.session.name, asignacion: req.session.asignacion});
     } else {
       res.redirect('/login');
     }
   });
+
+
+
 
 
 

@@ -37,11 +37,11 @@
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-      <div class="logo">
+     {{!--  <div class="logo">
         <a href="dashboard" class="simple-text" style="color:white;">
           Levitisoft
         </a>
-      </div>
+      </div> --}}
       {{#if name}}
       <div class="logo">
         <a href="dashboard" class="simple-text" style="color:white;">
@@ -54,7 +54,7 @@
           <li>
             <a href="dashboard">
               <i class="fa fa-house" style="color:white;"></i>
-              <p style="color:white;">Home</p>
+              <p style="color:white;">Dashboard</p>
             </a>
           </li>
           <li class="active">
@@ -105,6 +105,7 @@
               <p style="color:white;">Ventas</p>
             </a>
           </li>
+          <input hidden class="Permisos" id="permisosInput" type="text" value="{{asignacion}}">
           <li>
             <a href="reparaciones">
               <i class="fa fa-screwdriver-wrench" style="color:white;"></i>
@@ -232,7 +233,28 @@
 
 
 </body>
-<!--Inicio footer-->
+
+{{#if asignacion}}
+    <script>
+      var permisosInput = document.querySelector('#permisosInput');
+      var permisosValue = permisosInput.value;
+
+      var palabras = permisosValue.split(',');
+
+      var menuItems = document.querySelectorAll('.nav li');
+
+      menuItems.forEach(function (item) {
+        var items = item.querySelector('p').textContent.trim().toLowerCase();
+
+        if (palabras.includes(items)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    </script>
+    {{/if}}
+
 <script>
   let formulario = document.querySelector('#formulario');
   let nombreInput = document.querySelector('#nombreRol');
