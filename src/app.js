@@ -8,14 +8,15 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 require('dotenv').config();
 const clientesRoutes = require('./routes/clientes');
-const comprasRoutes = require('./routes/compras');
 const insumosRoutes = require('./routes/insumos');
-//const produccionRoutes = require('./routes/produccion');
-const productosRoutes = require('./routes/productos');
-const reparacionesRoutes = require('./routes/reparaciones');
 const rolesRoutes = require('./routes/roles');
 const ventasRoutes = require('./routes/ventas');
 const loginRoutes = require('./routes/login');
+const comprasRoutes = require('./routes/compras');
+const reparacionesRoutes = require('./routes/reparaciones');
+//const produccionesRoutes = require('./routes/producciones');
+const productosRoutes = require('./routes/productos');
+const usuariosRoutes = require('./routes/usuarios');
 const port = process.env.PORT
 
 //Especificar el directorio público
@@ -50,14 +51,15 @@ app.use(session({
 
 
 app.use('/', clientesRoutes);
-app.use('/', comprasRoutes);
 app.use('/', insumosRoutes);
-//app.use('/', produccionRoutes);
-app.use('/', productosRoutes);
-app.use('/', reparacionesRoutes);
 app.use('/', rolesRoutes);
 app.use('/', ventasRoutes);
 app.use('/', loginRoutes);
+app.use('/', usuariosRoutes);
+app.use('/', productosRoutes);
+//app.use('/', produccionesRoutes);
+app.use('/', reparacionesRoutes);
+app.use('/', comprasRoutes);
 
 app.get('/', (req, res) => {
     res.render('home', {
